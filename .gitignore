@@ -1,0 +1,7 @@
+Frontend/node_modules/
+Frontend/dist/
+Frontend/.env
+Backend/.env
+Backend/bin/
+Backend/tmp/
+*.log

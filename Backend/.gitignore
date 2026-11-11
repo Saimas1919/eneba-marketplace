@@ -1,0 +1,10 @@
+.env
+.env.local
+.env.*.local
+
+bin/
+tmp/
+vendor/
+
+*.log
+.DS_Store
