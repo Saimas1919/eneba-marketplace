@@ -1,0 +1,103 @@
+package database
+
+import "github.com/saimas1919/eneba-marketplace/backend/internal/models"
+
+var Products = []models.Product{
+	{
+		ID:           "star-wars-kotor",
+		Title:        "Star Wars: Knights of the Old Republic Steam Key GLOBAL",
+		Image:        "https://images.igdb.com/igdb/image/upload/t_cover_big/co2r2w.webp",
+		Platform:     "Steam",
+		Region:       "GLOBAL",
+		Price:        "€3.44",
+		PriceValue:   3.44,
+		OldPrice:     "€9.75",
+		Discount:     "-65%",
+		CashbackText: "14% Cashback",
+		Category:     "Games",
+		OS:           []string{"Windows", "Mac"},
+		Genres:       []string{"RPG", "Adventure", "Single Player"},
+		Images:       []string{"https://images.igdb.com/igdb/image/upload/t_cover_big/co2r2w.webp"},
+		Tags:         []string{"Single Player", "Third Person", "Adventure", "RPG"},
+		Description:  "Star Wars: Knights of the Old Republic is a role-playing video game developed by BioWare.",
+		RecommendedOffers: []models.Offer{
+			{Seller: "Featured offer", Price: "€3.44", OldPrice: "€9.75", Discount: "-65%", Cashback: "14% Cashback", IsFeatured: true, Verified: true},
+			{Seller: "KeyInstantDelivery", Price: "€3.85", OldPrice: "€9.75", Discount: "-61%", Rating: "9.91 Superb rating", Cashback: "11% Cashback", HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true},
+		},
+		OtherOffers: []models.Offer{
+			{Seller: "CdKeyMarkt", Price: "€3.20", OldPrice: "€9.75", Discount: "-67%", Rating: "9.78 Superb rating", Cashback: "11% Cashback", Verified: true},
+			{Seller: "Vikingsbrothers", Price: "€3.21", OldPrice: "€9.75", Discount: "-67%", Rating: "9.65 Excellent rating", Cashback: "11% Cashback", Verified: true},
+		},
+		OverallRatings: map[string]int{
+			"gameplay": 5, "story": 5, "graphics": 4, "soundtrack": 5,
+		},
+		Reviews: []models.Review{
+			{Rating: 4, User: "Gaxa", Avatar: "https://placehold.co/40x40/222/fff?text=G", Date: "10/17/2021", Text: "I was told all my life to play KOTOR. After many years, I did. And I do not regret it at all. Although its technical aspects have not aged quite well.", IsTranslated: true, Upvotes: 7},
+			{Rating: 5, User: "misiog", Avatar: "https://placehold.co/40x40/fff/000?text=M", Date: "9/14/2020", Text: "As for me, a legend plays. It is obvious that the gameplay or graphics may already seem archaic for years, but if we turn a blind eye to it.", IsTranslated: true, Upvotes: 3},
+			{Rating: 5, User: "Sheev", Avatar: "https://placehold.co/40x40/ccc/000?text=S", Date: "12/9/2022", Text: "Honestly, this is maybe the best sw game and the fact that it's almost 20 years old and it's still considered one of the best rpg games in general.", Upvotes: 0},
+			{Rating: 5, User: "Broly", Avatar: "https://placehold.co/40x40/f00/fff?text=B", Date: "11/17/2025", Text: "A great game, no doubt. Even though it's over 20 years old, its story is the best-written in any Star Wars game, and its ending is equally excellent.", IsTranslated: true, Upvotes: 0},
+		},
+		SystemRequirements: map[string][]models.SystemReq{
+			"windows": {
+				{Label: "System requirements", Value: "Windows XP Windows Vista"},
+				{Label: "Processor", Value: "Intel Pentium 3 1Ghz or AMD Athlon 1GHz"},
+				{Label: "Memory", Value: "256 RAM"},
+				{Label: "Graphics", Value: "32 MB Hardware T&L"},
+				{Label: "Storage", Value: "3.5 GB"},
+			},
+			"mac": {
+				{Label: "System requirements", Value: "macOS 10.6 Snow Leopard"},
+				{Label: "Processor", Value: "Intel Core 2 Duo"},
+				{Label: "Memory", Value: "2 GB RAM"},
+				{Label: "Graphics", Value: "256 MB"},
+				{Label: "Storage", Value: "4 GB"},
+			},
+		},
+		OtherDetails: []models.OtherDetail{
+			{Label: "Languages", Value: "English, French, German, Italian, Spanish"},
+			{Label: "Release date", Value: "November 19, 2003"},
+			{Label: "Publisher", Value: "LucasArts"},
+			{Label: "Developers", Value: "BioWare"},
+			{Label: "Works on", Value: "Windows, Mac"},
+		},
+		GamersAlsoViewed: []models.Product{
+			{ID: "sw-kotor-2", Title: "Star Wars: Knights of the Old Republic II - The Sith Lords Steam...", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2q7p.webp", Platform: "Steam", Region: "GLOBAL", Price: "€1.97", OldPrice: "€9.75", Discount: "-80%", CashbackText: "11% Cashback", PriceValue: 1.97},
+			{ID: "sw-clone-wars", Title: "Star Wars The Clone Wars: Republic Heroes Steam Key...", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2r2w.webp", Platform: "Steam", Region: "GLOBAL", Price: "€28.24", CashbackText: "Cashback: €3.11", PriceValue: 28.24},
+			{ID: "sw-commando", Title: "Star Wars: Republic Commando Steam Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2t2q.webp", Platform: "Steam", Region: "GLOBAL", Price: "€4.94", OldPrice: "€9.75", Discount: "-49%", CashbackText: "11% Cashback", PriceValue: 4.94},
+		},
+	},
+	{
+		ID:           "minecraft-java",
+		Title:        "Minecraft: Java & Bedrock Edition (PC) Windows Store Key",
+		Image:        "https://images.igdb.com/igdb/image/upload/t_cover_big/co2q7p.webp",
+		Platform:     "Windows",
+		Region:       "GLOBAL",
+		Price:        "€15.47",
+		PriceValue:   15.47,
+		CashbackText: "Cashback: €1.70",
+		Category:     "Games",
+		OS:           []string{"Windows"},
+		Genres:       []string{"Simulation", "Adventure", "Multiplayer"},
+		Tags:         []string{"Sandbox", "Survival", "Multiplayer"},
+		Description:  "Minecraft is a sandbox game developed by Mojang Studios.",
+		OtherDetails: []models.OtherDetail{
+			{Label: "Release date", Value: "November 18, 2011"},
+			{Label: "Publisher", Value: "Xbox Game Studios"},
+		},
+	},
+	{
+		ID:           "roblox-200",
+		Title:        "Roblox - 200 Robux Key GLOBAL",
+		Image:        "https://images.igdb.com/igdb/image/upload/t_cover_big/co4p3c.webp",
+		Platform:     "Roblox",
+		Region:       "GLOBAL",
+		Price:        "€2.58",
+		PriceValue:   2.58,
+		CashbackText: "6% Cashback",
+		Category:     "Gaming eCards",
+		OS:           []string{"Android", "iOS", "Windows", "Mac"},
+		Genres:       []string{"Multiplayer"},
+		Tags:         []string{"Gaming", "Virtual Currency"},
+		Description:  "Roblox is a global platform where millions of people gather together every day to imagine, create, and share experiences.",
+	},
+}
