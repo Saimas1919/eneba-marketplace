@@ -1,13 +1,10 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Info, Star, Trash2, Loader2 } from 'lucide-react'
+import { Info, Trash2, Loader2 } from 'lucide-react' // <-- Removed Star
 import { useAuth } from '../hooks/useAuth'
 import { api } from '../lib/api'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export default function CheckoutPage() {
-  useDocumentTitle("Secure Checkout | Eneba");
-
   const navigate = useNavigate()
   const { cartItems, cartSubtotal, cartCashback, removeCartItem, updateQuantity, clearCart } = useAuth()
   
@@ -52,7 +49,6 @@ export default function CheckoutPage() {
       console.error(err)
       alert("Payment failed. Please try again.")
     } finally {
-      // ALWAYS turn off loading, even if it fails
       setLoading(false)
     }
   }
@@ -72,7 +68,6 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-[#4618ac] text-white flex flex-col">
       
-      {/* HEADER / STEPS */}
       <div className="bg-[#311178] py-6 px-6 mb-8">
         <div className="max-w-[1200px] mx-auto flex items-center justify-between">
           <Link to="/" className="shrink-0 flex items-center">
@@ -104,7 +99,6 @@ export default function CheckoutPage() {
       <div className="max-w-[1200px] w-full mx-auto px-6 flex-1 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-8 items-start">
           
-          {/* LEFT COLUMN: PAYMENT METHODS */}
           <div className="flex flex-col gap-3">
             {paymentMethods.map((method) => (
               <button
@@ -134,7 +128,6 @@ export default function CheckoutPage() {
             ))}
           </div>
 
-          {/* RIGHT COLUMN: ORDER SUMMARY */}
           <div className="bg-[#311178] rounded-sm p-6 sticky top-6">
             
             <div className="flex flex-col gap-4 mb-6">
@@ -191,7 +184,6 @@ export default function CheckoutPage() {
               Payment collected on behalf of FlashDeals
             </div>
 
-            {/* FIXED BUTTON: Bright Yellow instead of Brown */}
             <button 
               onClick={handleContinue}
               disabled={loading}
