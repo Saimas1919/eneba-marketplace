@@ -11,7 +11,10 @@ import (
 func Setup() http.Handler {
 	r := chi.NewRouter()
 	r.Use(cors.Handler(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:5173"},
+		AllowedOrigins: []string{
+			"http://localhost:5173",
+			"https://eneba-marketplace-tan.vercel.app", // <-- Add your Vercel URL here
+		},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type"},
 		AllowCredentials: true,
