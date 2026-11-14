@@ -38,61 +38,61 @@ export default function Reviews({ reviews, overallRatings }: ReviewsProps) {
   const hasMore = safeReviews.length > limit
 
   return (
-    <div className="w-full mt-8 mb-16">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
+    <div className="w-full mt-8 mb-12">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-6 lg:mb-8">
         <div>
-          <h2 className="text-xl font-bold text-white mb-4">Reviews: {safeReviews.length}</h2>
+          <h2 className="text-lg lg:text-xl font-bold text-white mb-4">Reviews: {safeReviews.length}</h2>
           
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-4 lg:gap-6">
             {Object.entries(safeRatings).map(([key, val]) => (
               <div key={key} className="flex flex-col gap-1">
-                <span className="text-[13px] text-white/70 font-medium capitalize">{key}</span>
+                <span className="text-[11px] lg:text-[13px] text-white/70 font-medium capitalize">{key}</span>
                 {renderStars(val)}
               </div>
             ))}
           </div>
         </div>
 
-        <button className="bg-transparent border border-white hover:bg-white/10 text-white font-bold text-sm px-6 py-2 transition-colors rounded-sm whitespace-nowrap">
+        <button className="bg-transparent border border-white hover:bg-white/10 text-white font-bold text-sm px-6 py-2 transition-colors rounded-sm whitespace-nowrap w-full md:w-auto">
           Review now
         </button>
       </div>
 
       <div className="flex flex-col gap-0.5">
         {displayedReviews.map((review, idx) => (
-          <div key={idx} className="bg-[#3a1390] p-5 flex flex-col gap-3">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-              <div className="flex items-center gap-3 flex-wrap">
+          <div key={idx} className="bg-[#3a1390] p-4 lg:p-5 flex flex-col gap-3">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 md:gap-4">
+              <div className="flex items-center gap-2 lg:gap-3 flex-wrap">
                 {renderStars(review.rating, 12)}
                 <div className="flex items-center gap-2">
                   <img src={review.avatar} alt={review.user} className="w-6 h-6 rounded-full" />
-                  <span className="font-bold text-sm">{review.user}</span>
+                  <span className="font-bold text-xs lg:text-sm">{review.user}</span>
                 </div>
-                <span className="text-xs text-white/50">{review.date}</span>
+                <span className="text-[11px] lg:text-xs text-white/50">{review.date}</span>
               </div>
 
-              <div className="flex items-center gap-4 ml-auto md:ml-0">
+              <div className="flex items-center gap-4 ml-0 md:ml-auto w-full md:w-auto justify-end">
                 {review.isTranslated && (
-                  <button className="text-white/60 hover:text-white transition-colors"><Languages size={18} /></button>
+                  <button className="text-white/60 hover:text-white transition-colors"><Languages size={16} className="lg:w-[18px] lg:h-[18px]" /></button>
                 )}
                 <div className="flex items-center gap-1 cursor-pointer hover:text-white text-white/60 transition-colors">
-                  <ThumbsUp size={16} /> 
-                  <span className={`text-sm font-bold ${review.upvotes > 0 ? 'text-[#4ade80]' : 'text-white/60'}`}>
+                  <ThumbsUp size={14} className="lg:w-4 lg:h-4" /> 
+                  <span className={`text-xs lg:text-sm font-bold ${review.upvotes > 0 ? 'text-[#4ade80]' : 'text-white/60'}`}>
                     {review.upvotes > 0 ? `+${review.upvotes}` : '0'}
                   </span>
                 </div>
                 <div className="flex items-center gap-1 cursor-pointer hover:text-white text-white/60 transition-colors">
-                  <ThumbsDown size={16} /> 
-                  <span className="text-sm font-bold">{review.downvotes}</span>
+                  <ThumbsDown size={14} className="lg:w-4 lg:h-4" /> 
+                  <span className="text-xs lg:text-sm font-bold">{review.downvotes}</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row items-start gap-2">
+            <div className="flex flex-col md:flex-row items-start gap-2 mt-1">
               {review.isTranslated && (
                 <span className="bg-transparent border border-white/20 text-white/70 text-[10px] px-2 py-0.5 rounded-full shrink-0 mt-0.5">Auto-translated</span>
               )}
-              <p className="text-sm text-white/80 leading-relaxed">
+              <p className="text-xs lg:text-sm text-white/80 leading-relaxed">
                 {review.text}{' '}
                 <span className="text-[#FFCC00] cursor-pointer hover:underline font-semibold">Read more</span>
               </p>
@@ -102,8 +102,8 @@ export default function Reviews({ reviews, overallRatings }: ReviewsProps) {
       </div>
 
       {hasMore && !showAll && (
-        <div className="flex justify-center mt-8">
-          <button onClick={() => setShowAll(true)} className="bg-transparent border border-white hover:bg-white/10 text-white font-bold text-sm px-8 py-2.5 transition-colors rounded-sm">
+        <div className="flex justify-center mt-6 lg:mt-8">
+          <button onClick={() => setShowAll(true)} className="bg-transparent border border-white hover:bg-white/10 text-white font-bold text-sm px-8 py-2.5 transition-colors rounded-sm w-full sm:w-auto">
             Load more reviews
           </button>
         </div>

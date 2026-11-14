@@ -9,7 +9,8 @@ export default function GiftCard({ image, alt }: GiftCardProps) {
   const [imgSrc, setImgSrc] = useState(image)
 
   return (
-    <div className="relative w-full aspect-[3/4] overflow-hidden group cursor-pointer border border-white/10 hover:border-white/30 transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,0,0,0.5)] bg-[#1b0f36]">
+    /* Restored aspect-[3/4] to make it vertical like the old card */
+    <div className="relative w-full aspect-[3/4] overflow-hidden group cursor-pointer border border-[#4ade80]/70 hover:border-[#4ade80] transition-all duration-300 hover:shadow-[0_0_15px_rgba(74,222,128,0.4)] bg-[#1b0f36]">
       <img
         src={imgSrc}
         onError={() => setImgSrc('https://placehold.co/400x533/222222/ffffff?text=Gift+Card')}

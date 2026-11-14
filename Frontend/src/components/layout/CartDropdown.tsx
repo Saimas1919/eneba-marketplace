@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import { Trash2, X } from 'lucide-react'
 import { useAuth } from '../../hooks/useAuth'
 
-export default function CartDropdown({ onClose }: { onClose: () => void }) {
+export default function CartDropdown({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const { cartItems, removeCartItem, updateQuantity, cartSubtotal, cartCashback } = useAuth()
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (!isOpen) return;
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         onClose()
@@ -15,11 +16,13 @@ export default function CartDropdown({ onClose }: { onClose: () => void }) {
     }
     document.addEventListener("mousedown", handleClickOutside)
     return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [onClose])
+  }, [isOpen, onClose])
 
   return (
-    <div ref={dropdownRef} className="absolute right-0 top-[52px] w-[380px] bg-[#5825cc] border border-white/20 shadow-2xl rounded-sm text-left z-50 before:content-[''] before:absolute before:-top-2 before:right-4 before:w-4 before:h-4 before:bg-[#5825cc] before:border-l before:border-t before:border-white/20 before:rotate-45">
-      
+    <div 
+      ref={dropdownRef} 
+      className={`absolute right-0 top-[52px] w-[380px] bg-[#5825cc] border border-white/20 shadow-2xl rounded-sm text-left z-50 origin-top-right transition-all duration-200 ease-out before:content-[''] before:absolute before:-top-2 before:right-4 before:w-4 before:h-4 before:bg-[#5825cc] before:border-l before:border-t before:border-white/20 before:rotate-45 ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
+    >
       <div className="flex justify-between items-center p-5 border-b border-white/10">
         <h3 className="font-bold text-lg">My shopping cart</h3>
         <button onClick={onClose} className="text-white/60 hover:text-white transition-colors"><X size={20} /></button>
@@ -43,8 +46,6 @@ export default function CartDropdown({ onClose }: { onClose: () => void }) {
                   <h4 className="text-sm font-bold leading-tight line-clamp-2 mb-1">{item.title}</h4>
                   
                   <div className="flex justify-between items-center mt-3">
-                    
-                    {/* QUANTITY CONTROLS */}
                     <div className="flex items-center gap-3">
                       <button 
                         onClick={() => updateQuantity(item.id, -1)}

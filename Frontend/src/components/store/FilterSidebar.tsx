@@ -30,6 +30,8 @@ interface FilterSidebarProps {
   filters: FilterState
   setFilters: React.Dispatch<React.SetStateAction<FilterState>>
   filterData: FilterData
+  sortBy?: string
+  setSortBy?: (val: string) => void
 }
 
 interface FilterGroupProps {
@@ -133,7 +135,7 @@ function FilterGroup({ title, items, selectedItems, onToggle, hasSearch, default
   )
 }
 
-export default function FilterSidebar({ filters, setFilters, filterData }: FilterSidebarProps) {
+export default function FilterSidebar({ filters, setFilters, filterData, sortBy, setSortBy }: FilterSidebarProps) {
   const toggleFilter = (key: keyof FilterState, value: string) => {
     setFilters(prev => {
       const current = prev[key] as string[]
@@ -145,8 +147,29 @@ export default function FilterSidebar({ filters, setFilters, filterData }: Filte
   }
 
   return (
-    <div className="bg-[#5825cc] rounded-sm border border-white/10 text-white flex flex-col mb-10 py-2">
+    <div className="bg-[#5825cc] lg:rounded-sm border-none lg:border lg:border-white/10 text-white flex flex-col mb-0 lg:mb-10 py-2 h-full">
       
+      {/* SORT BY SECTION - Only visible on mobile inside the drawer */}
+      {sortBy !== undefined && setSortBy && (
+        <div className="lg:hidden border-b border-white/10 pb-4 mb-2">
+          <div className="w-full flex justify-between items-center px-4 pt-2 pb-3">
+            <h3 className="font-bold text-sm text-white">Sort by</h3>
+          </div>
+          <div className="px-4">
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="w-full bg-[#4618ac] border border-white/20 h-10 px-3 text-sm text-white outline-none focus:border-[#FFCC00] transition-colors cursor-pointer appearance-none rounded-sm"
+            >
+              <option value="popular">Popularity: Most popular</option>
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
+              <option value="title_asc">Name: A to Z</option>
+            </select>
+          </div>
+        </div>
+      )}
+
       <div className="border-b border-white/10 pb-2 mb-2">
         <div className="w-full flex justify-between items-center p-4">
           <h3 className="font-bold text-sm text-white">Price range (EUR)</h3>

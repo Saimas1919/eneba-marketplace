@@ -30,6 +30,7 @@ export default function Store() {
   const [products, setProducts] = useState<ProductCardProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   
   const itemsPerPage = hideFilters ? 25 : 20;
 
@@ -48,6 +49,11 @@ export default function Store() {
   };
 
   const sortBy = searchParams.get('sort') || 'popular';
+
+  const activeFilterCount = 
+    filters.category.length + filters.platform.length + filters.region.length + 
+    filters.os.length + filters.genre.length + 
+    (filters.minPrice ? 1 : 0) + (filters.maxPrice ? 1 : 0);
 
   const getPageTitle = () => {
     if (section === 'recommended') return 'All Recommended Products';
@@ -118,11 +124,6 @@ export default function Store() {
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const paginatedProducts = products.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-  const hasActiveFilters = 
-    filters.category.length > 0 || filters.platform.length > 0 || 
-    filters.region.length > 0 || filters.os.length > 0 || 
-    filters.genre.length > 0 || filters.minPrice !== '' || filters.maxPrice !== '';
-
   const clearAllFilters = () => {
     setSearchParams({});
     setCurrentPage(1);
@@ -134,10 +135,11 @@ export default function Store() {
   };
 
   return (
-    <div className="min-h-screen bg-[#4618ac] py-8 px-6">
+    <div className="min-h-screen bg-[#4618ac] py-6 px-4 md:py-8 md:px-6">
       <div className="max-w-[1300px] mx-auto">
         
-        <div className="flex items-center gap-2 text-[13px] text-white/60 mb-6 font-medium overflow-x-auto no-scrollbar whitespace-nowrap">
+        {/* Breadcrumbs */}
+        <div className="flex items-center gap-2 text-[13px] text-white/60 mb-4 md:mb-6 font-medium overflow-x-auto no-scrollbar whitespace-nowrap">
           <Link to="/" className="hover:text-white transition-colors">Home</Link>
           <ChevronRight size={14} className="shrink-0" />
           <Link to="/store" className="hover:text-white transition-colors">Store</Link>
@@ -157,71 +159,88 @@ export default function Store() {
           )}
         </div>
 
-        <h1 className="text-3xl font-extrabold text-white tracking-tight mb-8">
+        <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-4 md:mb-8">
           {getPageTitle()}
         </h1>
 
-        <div className="flex flex-col lg:flex-row gap-4 mb-12 justify-center">
+        <div className="flex flex-col lg:flex-row gap-4 mb-8 md:mb-12 justify-center">
           
+          {/* DESKTOP FILTER SIDEBAR */}
           {!hideFilters && (
-            <div className="w-full lg:w-[280px] shrink-0">
+            <div className="hidden lg:block w-[280px] shrink-0">
               <FilterSidebar filters={filters} setFilters={setFilters} filterData={filterData} />
             </div>
           )}
 
-          <div className={`${hideFilters ? 'w-full' : 'flex-1'}`}>
+          <div className={`${hideFilters ? 'w-full' : 'flex-1 w-full'}`}>
             
-            {!hideFilters && hasActiveFilters && (
-              <div className="flex flex-wrap items-center gap-2 mb-6">
-                {filters.category.length > 0 && (
-                  <button onClick={() => clearFilterGroup('category')} className="bg-[#311178] border border-white/20 rounded-full px-3 py-1.5 text-xs flex items-center gap-2 hover:bg-[#4e1a9e] transition-colors group">
-                    <span className="text-white">Type ({filters.category.length})</span>
-                    <X size={12} className="text-white/60 group-hover:text-white" />
-                  </button>
-                )}
-                {filters.platform.length > 0 && (
-                  <button onClick={() => clearFilterGroup('platform')} className="bg-[#311178] border border-white/20 rounded-full px-3 py-1.5 text-xs flex items-center gap-2 hover:bg-[#4e1a9e] transition-colors group">
-                    <span className="text-white">Platforms ({filters.platform.length})</span>
-                    <X size={12} className="text-white/60 group-hover:text-white" />
-                  </button>
-                )}
-                {filters.region.length > 0 && (
-                  <button onClick={() => clearFilterGroup('region')} className="bg-[#311178] border border-white/20 rounded-full px-3 py-1.5 text-xs flex items-center gap-2 hover:bg-[#4e1a9e] transition-colors group">
-                    <span className="text-white">Regions ({filters.region.length})</span>
-                    <X size={12} className="text-white/60 group-hover:text-white" />
-                  </button>
-                )}
-                {filters.genre.length > 0 && (
-                  <button onClick={() => clearFilterGroup('genre')} className="bg-[#311178] border border-white/20 rounded-full px-3 py-1.5 text-xs flex items-center gap-2 hover:bg-[#4e1a9e] transition-colors group">
-                    <span className="text-white">Genres ({filters.genre.length})</span>
-                    <X size={12} className="text-white/60 group-hover:text-white" />
-                  </button>
-                )}
-                <button onClick={clearAllFilters} className="text-[#FFCC00] text-xs hover:underline font-bold ml-2">
-                  Clear all
-                </button>
-              </div>
-            )}
-
-            <div className="flex justify-between items-center mb-6 text-white border-b border-white/10 pb-4">
-              <span className="text-sm">Results found: <strong>{loading ? '...' : products.length}</strong></span>
+            {/* RESULTS COUNT & MOBILE TOOLBAR */}
+            <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-4 text-white">
+              <span className="text-sm shrink-0">Results found: <strong>{loading ? '...' : products.length}</strong></span>
               
-              <div className="relative flex items-center gap-2 text-sm font-semibold">
-                <SlidersHorizontal size={16} />
-                <select 
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="bg-transparent text-white outline-none cursor-pointer appearance-none pr-6"
-                >
-                  <option value="popular" className="bg-[#4618ac]">Popularity: Most popular</option>
-                  <option value="price_asc" className="bg-[#4618ac]">Price: Low to High</option>
-                  <option value="price_desc" className="bg-[#4618ac]">Price: High to Low</option>
-                  <option value="title_asc" className="bg-[#4618ac]">Name: A to Z</option>
-                </select>
-                <ChevronDown size={16} className="absolute right-0 pointer-events-none" />
-              </div>
+              {!hideFilters && (
+                <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 md:pb-0 w-full md:w-auto">
+                  
+                  {/* MOBILE FILTER BUTTON */}
+                  <button
+                    onClick={() => setIsMobileFilterOpen(true)}
+                    className="flex lg:hidden items-center gap-2 bg-[#311178] border border-white/20 px-4 py-2 rounded-full text-sm font-semibold shrink-0 hover:bg-[#4e1a9e] transition-colors"
+                  >
+                    <SlidersHorizontal size={16} />
+                    Sort and filter
+                    {activeFilterCount > 0 && (
+                      <span className="bg-[#FFCC00] text-black text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                        {activeFilterCount}
+                      </span>
+                    )}
+                  </button>
+
+                  {/* ACTIVE FILTER PILLS */}
+                  {filters.category.length > 0 && (
+                    <button onClick={() => clearFilterGroup('category')} className="shrink-0 bg-[#311178] border border-white/20 rounded-full px-3 py-2 text-xs flex items-center gap-2 group">
+                      <span className="text-white">Type ({filters.category.length})</span>
+                      <X size={12} className="text-white/60 group-hover:text-white" />
+                    </button>
+                  )}
+                  {filters.platform.length > 0 && (
+                    <button onClick={() => clearFilterGroup('platform')} className="shrink-0 bg-[#311178] border border-white/20 rounded-full px-3 py-2 text-xs flex items-center gap-2 group">
+                      <span className="text-white">Platforms ({filters.platform.length})</span>
+                      <X size={12} className="text-white/60 group-hover:text-white" />
+                    </button>
+                  )}
+                  {filters.region.length > 0 && (
+                    <button onClick={() => clearFilterGroup('region')} className="shrink-0 bg-[#311178] border border-white/20 rounded-full px-3 py-2 text-xs flex items-center gap-2 group">
+                      <span className="text-white">Regions ({filters.region.length})</span>
+                      <X size={12} className="text-white/60 group-hover:text-white" />
+                    </button>
+                  )}
+                  {filters.genre.length > 0 && (
+                    <button onClick={() => clearFilterGroup('genre')} className="shrink-0 bg-[#311178] border border-white/20 rounded-full px-3 py-2 text-xs flex items-center gap-2 group">
+                      <span className="text-white">Genres ({filters.genre.length})</span>
+                      <X size={12} className="text-white/60 group-hover:text-white" />
+                    </button>
+                  )}
+
+                  {/* DESKTOP SORT DROPDOWN */}
+                  <div className="hidden md:flex relative items-center gap-2 text-sm font-semibold shrink-0 ml-auto border border-transparent">
+                    <SlidersHorizontal size={16} />
+                    <select 
+                      value={sortBy}
+                      onChange={(e) => setSortBy(e.target.value)}
+                      className="bg-transparent text-white outline-none cursor-pointer appearance-none pr-6"
+                    >
+                      <option value="popular" className="bg-[#4618ac]">Popularity: Most popular</option>
+                      <option value="price_asc" className="bg-[#4618ac]">Price: Low to High</option>
+                      <option value="price_desc" className="bg-[#4618ac]">Price: High to Low</option>
+                      <option value="title_asc" className="bg-[#4618ac]">Name: A to Z</option>
+                    </select>
+                    <ChevronDown size={16} className="absolute right-0 pointer-events-none" />
+                  </div>
+                </div>
+              )}
             </div>
 
+            {/* PRODUCT GRID */}
             {loading ? (
               <div className="text-white py-20 text-center text-lg animate-pulse">Loading products...</div>
             ) : products.length === 0 ? (
@@ -233,7 +252,7 @@ export default function Store() {
                 </button>
               </div>
             ) : (
-              <div className={`grid gap-x-4 gap-y-6 justify-items-center mx-auto ${hideFilters ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 max-w-[1200px]' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 max-w-[960px]'}`}>
+              <div className={`grid gap-4 md:gap-x-4 md:gap-y-6 justify-items-center mx-auto ${hideFilters ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 max-w-[1200px]' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'}`}>
                 {paginatedProducts.map((product, index) => (
                   <ProductCard key={index} {...product} showAddToCart={true} showViewOffers={true} />
                 ))}
@@ -242,6 +261,7 @@ export default function Store() {
           </div>
         </div>
 
+        {/* PAGINATION & SEO */}
         <div>
           {!loading && totalPages > 1 && (
             <div className="flex justify-center items-center gap-2 mb-16">
@@ -257,6 +277,44 @@ export default function Store() {
         </div>
 
       </div>
+
+      {/* MOBILE FILTER DRAWER */}
+      {isMobileFilterOpen && (
+        <div className="fixed inset-0 z-[100] lg:hidden flex">
+          {/* Backdrop */}
+          <div className="fixed inset-0 bg-black/60" onClick={() => setIsMobileFilterOpen(false)} />
+          
+          {/* Drawer Panel */}
+          <div className="relative w-[85%] max-w-[320px] bg-[#4618ac] h-full overflow-y-auto no-scrollbar shadow-2xl flex flex-col animate-in slide-in-from-left duration-200">
+            <div className="flex items-center justify-between p-4 border-b border-white/10 sticky top-0 bg-[#4618ac] z-10">
+              <h2 className="text-white font-bold text-lg">Filters</h2>
+              <button onClick={() => setIsMobileFilterOpen(false)} className="text-white/60 hover:text-white">
+                <X size={24} />
+              </button>
+            </div>
+            
+            <div className="flex-1">
+              <FilterSidebar 
+                filters={filters} 
+                setFilters={setFilters} 
+                filterData={filterData} 
+                sortBy={sortBy} 
+                setSortBy={setSortBy} 
+              />
+            </div>
+            
+            <div className="p-4 border-t border-white/10 sticky bottom-0 bg-[#4618ac] z-10">
+              <button 
+                onClick={() => setIsMobileFilterOpen(false)}
+                className="w-full bg-[#FFCC00] hover:bg-[#ffdc4d] text-black font-bold text-sm py-3 transition-colors"
+              >
+                Show {products.length} results
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
