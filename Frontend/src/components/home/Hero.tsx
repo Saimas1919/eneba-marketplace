@@ -34,8 +34,12 @@ export default function Hero({ banners }: { banners: any[] }) {
           <div
             key={banner.id}
             onClick={() => handleBannerClick(banner)}
-            /* flex-1 forces equal width on mobile. Desktop uses the exact flex ratios. */
-            className={`relative h-full cursor-pointer overflow-hidden transition-all duration-500 ease-in-out flex-1 md:flex-none ${
+            /* 
+              Fix: Removed `md:flex-none`. 
+              `flex-1` handles mobile (all equal).
+              `md:flex-[4]` and `md:flex-[0.5]` handle desktop perfectly.
+            */
+            className={`relative h-full cursor-pointer overflow-hidden transition-all duration-500 ease-in-out flex-1 min-w-0 ${
               isActive ? 'md:flex-[4]' : 'md:flex-[0.5]'
             }`}
           >
