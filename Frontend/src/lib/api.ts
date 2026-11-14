@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080/api/v1'
+const API_URL = 'https://eneba-marketplace-api-mi7b.onrender.com/api/v1'
 
 export const api = {
   getProducts: async (filters?: Record<string, string | string[] | number | undefined>) => {
