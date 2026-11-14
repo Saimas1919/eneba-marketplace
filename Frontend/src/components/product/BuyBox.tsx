@@ -1,17 +1,37 @@
+import { useNavigate } from 'react-router-dom'
 import { Heart, ShieldCheck, Globe, ShoppingCart, Star } from 'lucide-react'
+import { useAuth } from '../../hooks/useAuth'
 
 interface BuyBoxProps {
-  price: string
-  oldPrice: string
-  discount: string
-  cashback: string
-  offersCount: number
+  product: any
+  offersCount?: number
 }
 
-export default function BuyBox({ price, oldPrice, discount, cashback, offersCount }: BuyBoxProps) {
+export default function BuyBox({ product, offersCount = 18 }: BuyBoxProps) {
+  const navigate = useNavigate()
+  const { user, toggleCart } = useAuth()
+
+  const handleBuyNow = (e: React.MouseEvent) => {
+    e.preventDefault()
+    
+    if (!user) {
+      navigate('/login')
+      return
+    }
+
+    const isAlreadyInCart = user.cart?.includes(product.id)
+    
+    if (!isAlreadyInCart) {
+      // Pass 'false' so the popup does NOT show
+      toggleCart(product, false) 
+    }
+    
+    // Navigate directly to cart
+    navigate('/cart')
+  }
+
   return (
     <div className="flex flex-col gap-4 w-full">
-      
       {/* TRUSTPILOT HEADER */}
       <div className="flex items-center justify-end gap-2 mb-2 text-white">
         <span className="text-[15px] font-medium">Excellent</span>
@@ -33,15 +53,17 @@ export default function BuyBox({ price, oldPrice, discount, cashback, offersCoun
         </div>
         
         <div className="flex items-center gap-2 mb-1 text-white/60 text-sm">
-          <span className="line-through">{oldPrice}</span>
-          <span className="text-[#4ade80] font-bold">{discount}</span>
+          {product.oldPrice && <span className="line-through">{product.oldPrice}</span>}
+          {product.discount && <span className="text-[#4ade80] font-bold">{product.discount}</span>}
         </div>
+        
         <div className="flex items-baseline gap-2 mb-1">
-          <span className="text-4xl font-extrabold">{price}</span>
+          <span className="text-4xl font-extrabold">{product.price}</span>
           <span className="text-[11px] text-white/60">Price is not final</span>
         </div>
+        
         <div className="text-[#4ade80] text-sm font-bold mb-4 flex items-center gap-1">
-          <ShieldCheck size={14} /> {cashback} <span className="bg-[#4ade80] text-[#1b0f36] text-[10px] px-1 rounded-sm ml-1">Best cashback</span>
+          <ShieldCheck size={14} /> {product.cashbackText} <span className="bg-[#4ade80] text-[#1b0f36] text-[10px] px-1 rounded-sm ml-1">Best cashback</span>
         </div>
         
         <p className="text-xs text-white/60 mb-4">Promotion ends in 17 days!</p>
@@ -51,16 +73,23 @@ export default function BuyBox({ price, oldPrice, discount, cashback, offersCoun
         </div>
         
         <div className="flex gap-2">
-          <button className="flex-1 bg-[#FFCC00] hover:bg-[#ffdc4d] text-black font-bold text-lg py-2.5 transition-colors rounded-sm">
+          <button 
+            onClick={handleBuyNow}
+            className="flex-1 bg-[#FFCC00] hover:bg-[#ffdc4d] text-black font-bold text-lg py-2.5 transition-colors rounded-sm"
+          >
             Buy now
           </button>
-          <button className="w-12 bg-[#4618ac] border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors rounded-sm">
+          
+          <button 
+            onClick={handleBuyNow}
+            className="w-12 bg-[#4618ac] border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors rounded-sm"
+          >
             <ShoppingCart size={20} />
           </button>
         </div>
 
         <div className="text-center mt-4 text-sm text-[#FFCC00] hover:underline cursor-pointer">
-          +{offersCount} offers from €3.20
+          +{offersCount} offers from {product.price}
         </div>
       </div>
 

@@ -47,21 +47,17 @@ type Product struct {
 	Discount     string  `json:"discount,omitempty"`
 	CashbackText string  `json:"cashbackText"`
 
-	// Filterable Categories
 	Category string   `json:"category"`
 	OS       []string `json:"os"`
 	Genres   []string `json:"genres"`
 
-	// Full Product Page Details
 	Images      []string `json:"images"`
 	Tags        []string `json:"tags"`
 	Description string   `json:"description"`
 
-	// Offers
 	RecommendedOffers []Offer `json:"recommendedOffers,omitempty"`
 	OtherOffers       []Offer `json:"otherOffers,omitempty"`
 
-	// Dynamic Page Sections
 	OverallRatings     map[string]int         `json:"overallRatings,omitempty"`
 	Reviews            []Review               `json:"reviews,omitempty"`
 	SystemRequirements map[string][]SystemReq `json:"systemRequirements,omitempty"`

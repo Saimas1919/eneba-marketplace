@@ -1,52 +1,65 @@
-import { Crosshair, Compass, Car, ChessKnight, Shield, Gem, Swords } from 'lucide-react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Crosshair, Compass, Car, Shield, Gem, Swords, Gamepad2, Users, User, Crown, Box, Tent } from 'lucide-react'
 
-const categories = [
-  { name: 'Action', count: 20376, icon: Swords },
-  { name: 'Adventure', count: 19512, icon: Compass },
-  { name: 'Simulation', count: 15588, icon: Car },
-  { name: 'Strategy', count: 16829, icon: ChessKnight },
-  { name: 'RPG', count: 5582, icon: Shield },
-  { name: 'Indie', count: 6377, icon: Gem },
-  { name: 'FPS / TPS', count: 2754, icon: Crosshair },
-]
+const IconMap: Record<string, any> = {
+  Swords, Compass, Car, Shield, Gem, Crosshair, Gamepad2, Users, User, ChessKnight: Crown, Box, Tent
+}
 
-export default function Categories() {
+export default function Categories({ 
+  categories, 
+  title = "Categories" 
+}: { 
+  categories: any[], 
+  title?: string | null 
+}) {
+  const [visibleCount, setVisibleCount] = useState(7)
+  
+  if (!categories || categories.length === 0) return null
+
+  const hasMore = categories.length > visibleCount
+  const displayedCategories = categories.slice(0, visibleCount)
+
   return (
-    <section className="w-full bg-[#4618ac] py-12 px-6">
+    <section className="w-full py-12 px-6">
       <div className="max-w-[1200px] mx-auto">
         
-        <div className="flex items-center gap-2 mb-6">
-          <h2 className="text-2xl font-extrabold text-white tracking-tight">
-            Categories
-          </h2>
-        </div>
-
+        {title && (
+          <div className="flex items-center gap-2 mb-6">
+            <h2 className="text-2xl font-extrabold text-white tracking-tight">{title}</h2>
+          </div>
+        )}
+        
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
-          {categories.map((category, index) => {
-            const Icon = category.icon
+          {displayedCategories.map((category, index) => {
+            const Icon = IconMap[category.icon] || Gamepad2
+            
             return (
-              <button
-                key={index}
+              <Link 
+                key={index} 
+                to={`/store?genre=${encodeURIComponent(category.name)}`}
                 className="group flex flex-col items-center justify-center bg-[#3a1390] hover:bg-[#4e1a9e] border border-white/5 hover:border-white/20 p-4 transition-all duration-200"
               >
                 <span className="text-white/50 text-[11px] font-bold mb-3 group-hover:text-white/80 transition-colors">
                   {category.count}
                 </span>
                 <Icon size={28} className="text-white mb-3 group-hover:text-[#FFCC00] group-hover:scale-110 transition-all duration-200" />
-                <span className="text-white text-[13px] font-bold">
-                  {category.name}
-                </span>
-              </button>
+                <span className="text-white text-[13px] font-bold">{category.name}</span>
+              </Link>
             )
           })}
         </div>
 
-        <div className="mt-10 flex justify-center">
-          <button className="border border-white text-white font-bold text-sm px-12 py-3 hover:bg-white/10 transition-colors">
-            Load more
-          </button>
-        </div>
-
+        {hasMore && (
+          <div className="mt-10 flex justify-center">
+            <button 
+              onClick={() => setVisibleCount(prev => prev + 7)}
+              className="border border-white text-white font-bold text-sm px-12 py-3 hover:bg-white/10 transition-colors"
+            >
+              Load more
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )

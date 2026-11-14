@@ -1,90 +1,41 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const banners = [
-  {
-    id: 1,
-    title: "SINGLE'S DAY CASHBACK",
-    subtitle: "GET UP TO 11%!",
-    buttonText: "SHOP NOW",
-    bgColor: "bg-[#2b1b4d]",
-    textColor: "text-white",
-    btnBg: "bg-[#FFCC00]",
-    btnText: "text-black"
-  },
-  {
-    id: 2,
-    title: "It's happening!",
-    subtitle: "GRAND THEFT AUTO",
-    buttonText: "SHOP CARDS",
-    bgColor: "bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600",
-    textColor: "text-white",
-    btnBg: "bg-[#4618ac]",
-    btnText: "text-white"
-  },
-  {
-    id: 3,
-    title: "GAMES -90% OFF!",
-    subtitle: "Cheaper!",
-    buttonText: "SHOP NOW",
-    bgColor: "bg-[#1f1f2e]",
-    textColor: "text-white",
-    btnBg: "bg-[#FFCC00]",
-    btnText: "text-black"
-  },
-  {
-    id: 4,
-    title: "DEFY DEATH",
-    subtitle: "PHANTOM BLADE",
-    buttonText: "BUY NOW",
-    bgColor: "bg-[#3a0c0c]",
-    textColor: "text-[#FFCC00]",
-    btnBg: "bg-white",
-    btnText: "text-black"
+export default function Hero({ banners }: { banners: any[] }) {
+  const [activeId, setActiveId] = useState(banners?.[0]?.id || 1)
+  const navigate = useNavigate()
+
+  if (!banners || banners.length === 0) return null
+
+  const handleBannerClick = (banner: any) => {
+    if (activeId === banner.id) {
+      // If it's already active/expanded, navigate to the link
+      navigate(banner.link || '/store')
+    } else {
+      // If it's not active, expand it
+      setActiveId(banner.id)
+    }
   }
-]
-
-export default function Hero() {
-  const [activeId, setActiveId] = useState(1)
 
   return (
-    <section className="w-full h-[360px] flex overflow-hidden border-b border-white/10">
+    <section className="w-full h-[400px] flex overflow-hidden border-b border-white/10">
       {banners.map((banner) => {
         const isActive = activeId === banner.id
-
         return (
           <div
             key={banner.id}
-            onClick={() => setActiveId(banner.id)}
-            className={`
-              relative h-full cursor-pointer overflow-hidden transition-all duration-500 ease-in-out flex flex-col justify-center items-center
-              ${banner.bgColor}
-              ${isActive ? 'flex-[4]' : 'flex-[0.5]'}
-            `}
+            onClick={() => handleBannerClick(banner)}
+            className={`relative h-full cursor-pointer overflow-hidden transition-all duration-500 ease-in-out ${isActive ? 'flex-[4]' : 'flex-[0.5]'}`}
           >
-            {/* Expanded View */}
-            {isActive ? (
-              <div className="relative z-10 text-center px-6 animate-fade-in">
-                <h2 className={`text-3xl md:text-5xl font-extrabold tracking-tight mb-2 ${banner.textColor} uppercase`}>
-                  {banner.title}
-                </h2>
-                <p className={`text-lg md:text-xl font-bold mb-6 ${banner.textColor} opacity-80 uppercase tracking-widest`}>
-                  {banner.subtitle}
-                </p>
-                <button className={`${banner.btnBg} ${banner.btnText} font-bold px-8 py-3 text-sm hover:opacity-90 transition-opacity`}>
-                  {banner.buttonText}
-                </button>
-              </div>
-            ) : (
-              // Collapsed View (Just the title, rotated vertically or faded)
-              <div className="relative z-10 text-center opacity-50 hover:opacity-100 transition-opacity">
-                <span className={`text-sm font-bold tracking-widest uppercase whitespace-nowrap ${banner.textColor}`}>
-                  {banner.title.split(' ')[0]}
-                </span>
-              </div>
-            )}
+            {/* BACKGROUND IMAGE */}
+            <img
+              src={banner.image}
+              alt="Promo Banner"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
             
-            {/* Subtle separator line between banners */}
-            {!isActive && <div className="absolute right-0 top-0 w-[1px] h-full bg-white/10" />}
+            {/* OVERLAY: Darker when inactive to highlight the active image */}
+            <div className={`absolute inset-0 transition-colors duration-500 ${isActive ? 'bg-black/0' : 'bg-black/60 hover:bg-black/30'}`} />
           </div>
         )
       })}

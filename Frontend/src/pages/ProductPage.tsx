@@ -8,6 +8,7 @@ import GamersAlsoViewed from '../components/product/GamersAlsoViewed'
 import Reviews from '../components/product/Reviews'
 import ProductDetails from '../components/product/ProductDetails'
 import { api } from '../lib/api'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export default function ProductPage() {
   const { id } = useParams()
@@ -15,8 +16,12 @@ export default function ProductPage() {
   const [loading, setLoading] = useState(true)
   const [activeImage, setActiveImage] = useState('')
 
+  // Dynamic Title
+  useDocumentTitle(product ? `${product.title} | Eneba` : 'Loading... | Eneba');
+
   useEffect(() => {
     if (id) {
+      setLoading(true)
       api.getProduct(id)
         .then(data => {
           setProduct(data)
@@ -30,8 +35,8 @@ export default function ProductPage() {
     }
   }, [id])
 
-  if (loading) return <div className="min-h-screen bg-[#4618ac] text-white flex items-center justify-center">Loading...</div>
-  if (!product) return <div className="min-h-screen bg-[#4618ac] text-white flex items-center justify-center">Product not found</div>
+  if (loading) return <div className="min-h-screen bg-[#4618ac] text-white flex items-center justify-center text-xl">Loading...</div>
+  if (!product) return <div className="min-h-screen bg-[#4618ac] text-white flex items-center justify-center text-xl">Product not found</div>
 
   const category = product.category || "Games"
   const platform = product.platform || "Other"
@@ -40,7 +45,6 @@ export default function ProductPage() {
     <div className="min-h-screen bg-[#4618ac] text-white py-8 px-6">
       <div className="max-w-[1440px] mx-auto">
         
-        {/* DYNAMIC BREADCRUMBS */}
         <div className="flex items-center gap-2 text-[13px] text-white/60 mb-6 font-medium overflow-x-auto no-scrollbar whitespace-nowrap">
           <Link to="/" className="hover:text-white transition-colors">Home</Link>
           <ChevronRight size={14} className="shrink-0" />
@@ -48,17 +52,13 @@ export default function ProductPage() {
           <ChevronRight size={14} className="shrink-0" />
           <Link to={`/store?category=${encodeURIComponent(category)}`} className="hover:text-white transition-colors">{category}</Link>
           <ChevronRight size={14} className="shrink-0" />
-          <Link to={`/store?platform=${encodeURIComponent(platform)}`} className="hover:text-white transition-colors">{platform}</Link>
-          <ChevronRight size={14} className="shrink-0" />
           <span className="text-white truncate max-w-[200px] md:max-w-xs">{product.title}</span>
         </div>
 
-        {/* MAIN LAYOUT */}
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
           <div className="flex-1 w-full flex flex-col gap-10">
             
-            {/* TOP SECTION: GALLERY + INFO */}
             <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8">
               <div className="flex flex-col gap-4">
                 <div className="w-full aspect-[3/4] bg-[#1b0f36] border border-white/10 overflow-hidden relative">
@@ -66,7 +66,11 @@ export default function ProductPage() {
                 </div>
                 <div className="flex gap-2 overflow-x-auto no-scrollbar">
                   {(product.images || [product.image]).map((img: string, i: number) => (
-                    <button key={i} onClick={() => setActiveImage(img)} className={`w-16 h-16 shrink-0 border-2 transition-colors ${activeImage === img ? 'border-[#FFCC00]' : 'border-transparent hover:border-white/40'}`}>
+                    <button 
+                      key={i} 
+                      onClick={() => setActiveImage(img)}
+                      className={`w-16 h-16 shrink-0 border-2 transition-colors ${activeImage === img ? 'border-[#FFCC00]' : 'border-transparent hover:border-white/40'}`}
+                    >
                       <img src={img} alt="" className="w-full h-full object-cover" />
                     </button>
                   ))}
@@ -80,14 +84,16 @@ export default function ProductPage() {
                   </span>
                 </div>
                 
-                <h1 className="text-3xl lg:text-4xl font-extrabold tracking-tight mb-8 leading-tight">{product.title}</h1>
+                <h1 className="text-3xl lg:text-4xl font-extrabold tracking-tight mb-8 leading-tight">
+                  {product.title}
+                </h1>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                   <div className="flex gap-3">
                     <Globe className="text-[#4ade80] shrink-0" size={24} />
                     <div>
-                      <h3 className="font-bold text-sm mb-1">Global</h3>
-                      <p className="text-xs text-white/60 leading-relaxed">Can be activated in Lithuania<br/><span className="underline cursor-pointer">Check region restrictions</span></p>
+                      <h3 className="font-bold text-sm mb-1">{product.region}</h3>
+                      <p className="text-xs text-white/60 leading-relaxed">Can be activated in your region<br/><span className="underline cursor-pointer">Check region restrictions</span></p>
                     </div>
                   </div>
                   <div className="flex gap-3">
@@ -119,10 +125,11 @@ export default function ProductPage() {
               </div>
             </div>
 
-            {/* OFFERS */}
             <div className="w-full">
-              {product.recommendedOffers && <Offers title="Recommended offers" offers={product.recommendedOffers} />}
-              {product.otherOffers && (
+              {product.recommendedOffers && product.recommendedOffers.length > 0 && (
+                <Offers title="Recommended offers" offers={product.recommendedOffers} />
+              )}
+              {product.otherOffers && product.otherOffers.length > 0 && (
                 <Offers 
                   title={`${product.otherOffers.length} other offers`} 
                   titleColor="text-[#4ade80]"
@@ -134,7 +141,6 @@ export default function ProductPage() {
               )}
             </div>
 
-            {/* DYNAMIC SECTIONS */}
             {product.gamersAlsoViewed && product.gamersAlsoViewed.length > 0 && (
               <GamersAlsoViewed products={product.gamersAlsoViewed} />
             )}
@@ -152,15 +158,11 @@ export default function ProductPage() {
 
           </div>
 
-          {/* RIGHT SIDE */}
           <div className="w-full lg:w-[360px] shrink-0">
             <div className="lg:sticky lg:top-[116px]">
               <BuyBox 
-                price={product.price}
-                oldPrice={product.oldPrice || ""}
-                discount={product.discount || ""}
-                cashback={product.cashbackText}
-                offersCount={product.otherOffers ? product.otherOffers.length : 0}
+                product={product} 
+                offersCount={product.otherOffers ? product.otherOffers.length + (product.recommendedOffers?.length || 0) : 18} 
               />
             </div>
           </div>
