@@ -20,7 +20,8 @@ var Products = []models.Product{
 		},
 		OverallRatings: map[string]int{"gameplay": 4, "story": 5, "graphics": 5, "soundtrack": 5},
 		Reviews: []models.Review{
-			{Rating: 5, User: "V", Avatar: "https://placehold.co/40x40/222/fff?text=V", Date: "10/17/2021", Text: "Wake up Samurai, we have a city to burn. Absolutely stunning game, the story grips you instantly.", IsTranslated: false, Upvotes: 12},
+			{Rating: 5, User: "V", Avatar: "https://placehold.co/40x40/222/fff?text=V", Date: "10/17/2021", Text: "Wake up Samurai, we have a city to burn. Absolutely stunning game.", IsTranslated: false, Upvotes: 12},
+			{Rating: 4, User: "Johnny", Avatar: "https://placehold.co/40x40/ccc/000?text=J", Date: "9/14/2020", Text: "Great story, though it had a rocky launch. It's fixed now.", IsTranslated: true, Upvotes: 5},
 		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 10 64-bit"}, {Label: "Processor", Value: "Intel Core i7-6700"}, {Label: "Memory", Value: "16 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GTX 1060 6GB"}},
@@ -37,10 +38,14 @@ var Products = []models.Product{
 		Tags:   []string{"Open World", "Crime", "Multiplayer"}, Description: "Experience the sprawling sun-soaked metropolis of Los Santos and Blaine County.",
 		RecommendedOffers: []models.Offer{{Seller: "FlashDeals", Price: "€11.86", OldPrice: "€29.99", Discount: "-60%", Rating: "9.8 Superb rating", Cashback: "3% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 5, "story": 5, "graphics": 4, "soundtrack": 4},
+		Reviews: []models.Review{
+			{Rating: 5, User: "Trevor", Avatar: "https://placehold.co/40x40/222/fff?text=T", Date: "11/17/2021", Text: "Best GTA game ever made. The story mode is a masterpiece.", IsTranslated: false, Upvotes: 20},
+			{Rating: 4, User: "Franklin", Avatar: "https://placehold.co/40x40/fff/000?text=F", Date: "5/22/2022", Text: "Online mode is fun but full of griefers. Story mode is perfect.", IsTranslated: false, Upvotes: 2},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 10 64 Bit"}, {Label: "Processor", Value: "Intel Core i5 3470"}, {Label: "Memory", Value: "8 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GTX 660 2GB"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "April 14, 2015"}, {Label: "Publisher", Value: "Rockstar Games"}, {Label: "Developers", Value: "Rockstar North"}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "April 14, 2015"}, {Label: "Publisher", Value: "Rockstar Games"}, {Label: "Developers", Value: "Rockstar North"}, {Label: "Age Rating", Value: "PEGI 18"}},
 	},
 	{
 		ID: "elden-ring", Title: "ELDEN RING Steam Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.webp",
@@ -50,10 +55,13 @@ var Products = []models.Product{
 		Tags:   []string{"Souls-like", "Fantasy", "Open World"}, Description: "Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring.",
 		RecommendedOffers: []models.Offer{{Seller: "Eneba Official", Price: "€39.99", OldPrice: "€59.99", Discount: "-33%", Rating: "10 Perfect rating", Cashback: "4% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 5, "story": 4, "graphics": 5, "soundtrack": 5},
+		Reviews: []models.Review{
+			{Rating: 5, User: "Tarnished", Avatar: "https://placehold.co/40x40/d4af37/fff?text=T", Date: "3/1/2022", Text: "A masterpiece. The world design is unmatched.", IsTranslated: false, Upvotes: 50},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 10"}, {Label: "Processor", Value: "INTEL CORE I5-8400"}, {Label: "Memory", Value: "12 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GEFORCE GTX 1060 3 GB"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "February 25, 2022"}, {Label: "Publisher", Value: "Bandai Namco Entertainment"}, {Label: "Developers", Value: "FromSoftware Inc."}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "February 25, 2022"}, {Label: "Publisher", Value: "Bandai Namco Entertainment"}, {Label: "Developers", Value: "FromSoftware Inc."}, {Label: "Age Rating", Value: "PEGI 16"}},
 	},
 	{
 		ID: "red-dead-redemption-2", Title: "Red Dead Redemption 2 Rockstar Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1q1f.webp",
@@ -63,10 +71,46 @@ var Products = []models.Product{
 		Tags:   []string{"Western", "Open World", "Story Rich"}, Description: "Arthur Morgan and the Van der Linde gang are outlaws on the run.",
 		RecommendedOffers: []models.Offer{{Seller: "RDR2Keys", Price: "€19.99", OldPrice: "€59.99", Discount: "-66%", Rating: "9.9 Superb rating", Cashback: "5% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 5, "story": 5, "graphics": 5, "soundtrack": 5},
+		Reviews: []models.Review{
+			{Rating: 5, User: "Arthur", Avatar: "https://placehold.co/40x40/222/fff?text=A", Date: "1/1/2021", Text: "Greatest game of all time. The detail is insane.", IsTranslated: false, Upvotes: 100},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 10 64-bit"}, {Label: "Processor", Value: "Intel Core i7-4770K"}, {Label: "Memory", Value: "12 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GTX 1060 6GB"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "December 5, 2019"}, {Label: "Publisher", Value: "Rockstar Games"}, {Label: "Developers", Value: "Rockstar Studios"}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "December 5, 2019"}, {Label: "Publisher", Value: "Rockstar Games"}, {Label: "Developers", Value: "Rockstar Studios"}, {Label: "Age Rating", Value: "PEGI 18"}},
+	},
+	{
+		ID: "baldurs-gate-3", Title: "Baldur's Gate 3 GOG Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co670h.webp",
+		Platform: "Other", Region: "Global", Price: "€59.99", PriceValue: 59.99, CashbackText: "3% Cashback",
+		Category: "Game", OS: []string{"Windows", "Mac"}, Genres: []string{"RPG", "Strategy", "Multiplayer"},
+		Images: []string{"https://images.igdb.com/igdb/image/upload/t_cover_big/co670h.webp"},
+		Tags:   []string{"D&D", "Turn-Based", "Story Rich"}, Description: "Gather your party, and return to the Forgotten Realms in a tale of fellowship and betrayal.",
+		RecommendedOffers: []models.Offer{{Seller: "Larian Official", Price: "€59.99", Cashback: "3% Cashback", Rating: "10 Perfect rating", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:    map[string]int{"gameplay": 5, "story": 5, "graphics": 5, "soundtrack": 5},
+		Reviews: []models.Review{
+			{Rating: 5, User: "Tav", Avatar: "https://placehold.co/40x40/222/fff?text=T", Date: "8/3/2023", Text: "An absolute masterpiece. The freedom of choice is staggering.", IsTranslated: false, Upvotes: 300},
+		},
+		SystemRequirements: map[string][]models.SystemReq{
+			"windows": {{Label: "OS", Value: "Windows 10 64-bit"}, {Label: "Processor", Value: "Intel I5 4690 / AMD FX 8350"}, {Label: "Memory", Value: "8 GB RAM"}, {Label: "Graphics", Value: "Nvidia GTX 970 / RX 480"}},
+		},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "August 3, 2023"}, {Label: "Publisher", Value: "Larian Studios"}, {Label: "Developers", Value: "Larian Studios"}, {Label: "Age Rating", Value: "PEGI 18"}},
+	},
+	{
+		ID: "the-witcher-3", Title: "The Witcher 3: Wild Hunt GOTY Edition GOG Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.webp",
+		Platform: "Other", Region: "Global", Price: "€9.99", PriceValue: 9.99, OldPrice: "€39.99", Discount: "-75%", CashbackText: "2% Cashback",
+		Category: "Game", OS: []string{"Windows", "Mac"}, Genres: []string{"RPG", "Adventure", "Single Player"},
+		Images: []string{"https://images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.webp"},
+		Tags:   []string{"Fantasy", "Open World", "Story Rich"}, Description: "You are Geralt of Rivia, mercenary monster slayer.",
+		RecommendedOffers: []models.Offer{{Seller: "GOG_Official", Price: "€9.99", OldPrice: "€39.99", Discount: "-75%", Rating: "10 Perfect rating", Cashback: "2% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:    map[string]int{"gameplay": 5, "story": 5, "graphics": 4, "soundtrack": 5},
+		Reviews: []models.Review{
+			{Rating: 5, User: "Geralt", Avatar: "https://placehold.co/40x40/fff/000?text=G", Date: "5/19/2015", Text: "Best RPG ever made. Hearts of Stone and Blood and Wine DLCs are amazing.", IsTranslated: false, Upvotes: 200},
+		},
+		SystemRequirements: map[string][]models.SystemReq{
+			"windows": {{Label: "OS", Value: "Windows 7 64-bit"}, {Label: "Processor", Value: "Intel CPU Core i5-2500K"}, {Label: "Memory", Value: "6 GB RAM"}, {Label: "Graphics", Value: "Nvidia GPU GeForce GTX 660"}},
+			"mac":     {{Label: "OS", Value: "OS X 10.12.6"}, {Label: "Processor", Value: "Intel Core i5-2500K"}, {Label: "Memory", Value: "8 GB RAM"}},
+		},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "May 18, 2015"}, {Label: "Publisher", Value: "CD PROJEKT RED"}, {Label: "Developers", Value: "CD PROJEKT RED"}, {Label: "Age Rating", Value: "PEGI 18"}},
 	},
 	{
 		ID: "god-of-war", Title: "God of War Steam Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1tmu.webp",
@@ -76,10 +120,13 @@ var Products = []models.Product{
 		Tags:   []string{"Mythology", "Hack and Slash", "Story Rich"}, Description: "His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods.",
 		RecommendedOffers: []models.Offer{{Seller: "PlayStation", Price: "€19.99", OldPrice: "€49.99", Discount: "-60%", Rating: "10 Perfect", Cashback: "3% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 5, "story": 5, "graphics": 5, "soundtrack": 5},
+		Reviews: []models.Review{
+			{Rating: 5, User: "Kratos", Avatar: "https://placehold.co/40x40/f00/fff?text=K", Date: "1/14/2022", Text: "Boy! This game is an emotional rollercoaster and a technical marvel.", IsTranslated: false, Upvotes: 150},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 10 64-bit"}, {Label: "Processor", Value: "Intel i5-2500k"}, {Label: "Memory", Value: "8 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GTX 960"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "January 14, 2022"}, {Label: "Publisher", Value: "PlayStation PC LLC"}, {Label: "Developers", Value: "Santa Monica Studio"}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "January 14, 2022"}, {Label: "Publisher", Value: "PlayStation PC LLC"}, {Label: "Developers", Value: "Santa Monica Studio"}, {Label: "Age Rating", Value: "PEGI 18"}},
 	},
 	{
 		ID: "spider-man-remastered", Title: "Marvel's Spider-Man Remastered Steam Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co4l4y.webp",
@@ -89,10 +136,13 @@ var Products = []models.Product{
 		Tags:   []string{"Superhero", "Marvel", "Web Swinging"}, Description: "Developed by Insomniac Games in collaboration with Marvel, and optimized for PC.",
 		RecommendedOffers: []models.Offer{{Seller: "PlayStation", Price: "€29.99", OldPrice: "€59.99", Discount: "-50%", Rating: "9.9 Superb", Cashback: "4% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 5, "story": 5, "graphics": 5, "soundtrack": 4},
+		Reviews: []models.Review{
+			{Rating: 5, User: "PeterP", Avatar: "https://placehold.co/40x40/f00/fff?text=P", Date: "8/12/2022", Text: "The web-swinging is so fluid and satisfying. Great PC port.", IsTranslated: false, Upvotes: 80},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 10 64-bit"}, {Label: "Processor", Value: "Intel Core i3-4160"}, {Label: "Memory", Value: "8 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GTX 950"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "August 12, 2022"}, {Label: "Publisher", Value: "PlayStation PC LLC"}, {Label: "Developers", Value: "Insomniac Games"}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "August 12, 2022"}, {Label: "Publisher", Value: "PlayStation PC LLC"}, {Label: "Developers", Value: "Insomniac Games"}, {Label: "Age Rating", Value: "PEGI 16"}},
 	},
 	{
 		ID: "hogwarts-legacy", Title: "Hogwarts Legacy Steam Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co4p3c.webp",
@@ -102,10 +152,13 @@ var Products = []models.Product{
 		Tags:   []string{"Magic", "Open World", "Harry Potter"}, Description: "Experience Hogwarts in the 1800s. Your character is a student who holds the key to an ancient secret.",
 		RecommendedOffers: []models.Offer{{Seller: "Warner Bros", Price: "€29.99", OldPrice: "€59.99", Discount: "-50%", Rating: "9.7 Excellent", Cashback: "5% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 4, "story": 5, "graphics": 5, "soundtrack": 5},
+		Reviews: []models.Review{
+			{Rating: 5, User: "Wizard", Avatar: "https://placehold.co/40x40/222/fff?text=W", Date: "2/10/2023", Text: "Exploring Hogwarts for the first time is pure magic. Combat is surprisingly good.", IsTranslated: false, Upvotes: 60},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 10 64-bit"}, {Label: "Processor", Value: "Intel Core i5-8400"}, {Label: "Memory", Value: "16 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GTX 1080 Ti"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "February 10, 2023"}, {Label: "Publisher", Value: "Warner Bros. Games"}, {Label: "Developers", Value: "Avalanche Software"}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "February 10, 2023"}, {Label: "Publisher", Value: "Warner Bros. Games"}, {Label: "Developers", Value: "Avalanche Software"}, {Label: "Age Rating", Value: "PEGI 12"}},
 	},
 	{
 		ID: "resident-evil-4", Title: "Resident Evil 4 Remake Steam Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co6n9n.webp",
@@ -115,10 +168,13 @@ var Products = []models.Product{
 		Tags:   []string{"Survival Horror", "Zombies", "Remake"}, Description: "Survival is just the beginning. Six years have passed since the biological disaster in Raccoon City.",
 		RecommendedOffers: []models.Offer{{Seller: "Capcom", Price: "€34.99", OldPrice: "€59.99", Discount: "-41%", Rating: "10 Perfect", Cashback: "3% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 5, "story": 5, "graphics": 5, "soundtrack": 5},
+		Reviews: []models.Review{
+			{Rating: 5, User: "Leon", Avatar: "https://placehold.co/40x40/222/fff?text=L", Date: "3/24/2023", Text: "The best remake ever made. Capcom knocked it out of the park.", IsTranslated: false, Upvotes: 120},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 10 64-bit"}, {Label: "Processor", Value: "AMD Ryzen 3 1200"}, {Label: "Memory", Value: "8 GB RAM"}, {Label: "Graphics", Value: "AMD RX 560"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "March 24, 2023"}, {Label: "Publisher", Value: "CAPCOM Co., Ltd."}, {Label: "Developers", Value: "CAPCOM Co., Ltd."}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "March 24, 2023"}, {Label: "Publisher", Value: "CAPCOM Co., Ltd."}, {Label: "Developers", Value: "CAPCOM Co., Ltd."}, {Label: "Age Rating", Value: "PEGI 18"}},
 	},
 	{
 		ID: "starfield", Title: "Starfield Steam Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co5vmg.webp",
@@ -128,10 +184,13 @@ var Products = []models.Product{
 		Tags:   []string{"Space", "Sci-Fi", "Exploration"}, Description: "Starfield is the first new universe in 25 years from Bethesda Game Studios.",
 		RecommendedOffers: []models.Offer{{Seller: "Bethesda", Price: "€49.99", OldPrice: "€69.99", Discount: "-28%", Rating: "9.5 Excellent", Cashback: "4% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 4, "story": 4, "graphics": 5, "soundtrack": 4},
+		Reviews: []models.Review{
+			{Rating: 4, User: "SpaceExplorer", Avatar: "https://placehold.co/40x40/222/fff?text=S", Date: "9/6/2023", Text: "A massive universe to explore. Load times are a bit annoying but overall great.", IsTranslated: false, Upvotes: 40},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 10 64-bit"}, {Label: "Processor", Value: "AMD Ryzen 5 2600X"}, {Label: "Memory", Value: "16 GB RAM"}, {Label: "Graphics", Value: "AMD Radeon RX 5700"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "September 6, 2023"}, {Label: "Publisher", Value: "Bethesda Softworks"}, {Label: "Developers", Value: "Bethesda Game Studios"}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "September 6, 2023"}, {Label: "Publisher", Value: "Bethesda Softworks"}, {Label: "Developers", Value: "Bethesda Game Studios"}, {Label: "Age Rating", Value: "PEGI 18"}},
 	},
 	{
 		ID: "ea-fc-24", Title: "EA SPORTS FC 24 PC Origin Key GLOBAL", Image: "https://placehold.co/400x533/ffffff/000000?text=EA+FC+24",
@@ -141,10 +200,13 @@ var Products = []models.Product{
 		Tags:   []string{"Football", "Sports", "FIFA"}, Description: "EA SPORTS FC 24 is a new era for The World's Game.",
 		RecommendedOffers: []models.Offer{{Seller: "EA Sports", Price: "€39.99", OldPrice: "€69.99", Discount: "-42%", Rating: "9.2 Excellent", Cashback: "4% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 4, "story": 1, "graphics": 4, "soundtrack": 4},
+		Reviews: []models.Review{
+			{Rating: 3, User: "FIFAFan", Avatar: "https://placehold.co/40x40/222/fff?text=F", Date: "9/29/2023", Text: "Same game, new name. Ultimate Team is still pay-to-win.", IsTranslated: false, Upvotes: -5},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 10 64-bit"}, {Label: "Processor", Value: "Intel Core i5-6600K"}, {Label: "Memory", Value: "8 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GeForce GTX 1050 Ti"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "September 29, 2023"}, {Label: "Publisher", Value: "Electronic Arts"}, {Label: "Developers", Value: "EA Vancouver"}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "September 29, 2023"}, {Label: "Publisher", Value: "Electronic Arts"}, {Label: "Developers", Value: "EA Vancouver"}, {Label: "Age Rating", Value: "PEGI 3"}},
 	},
 	{
 		ID: "call-of-duty-mw3", Title: "Call of Duty: Modern Warfare III Steam Key GLOBAL", Image: "https://placehold.co/400x533/000000/ffffff?text=MW3",
@@ -154,15 +216,46 @@ var Products = []models.Product{
 		Tags:   []string{"FPS", "Warfare", "Multiplayer"}, Description: "In the direct sequel to the record-breaking Call of Duty: Modern Warfare II.",
 		RecommendedOffers: []models.Offer{{Seller: "Activision", Price: "€45.00", OldPrice: "€69.99", Discount: "-35%", Rating: "9.0 Excellent", Cashback: "2% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 4, "story": 3, "graphics": 4, "soundtrack": 4},
+		Reviews: []models.Review{
+			{Rating: 4, User: "Soldier", Avatar: "https://placehold.co/40x40/222/fff?text=S", Date: "11/10/2023", Text: "Campaign is short but multiplayer is classic COD fun.", IsTranslated: false, Upvotes: 15},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 10 64-bit"}, {Label: "Processor", Value: "Intel Core i5-6600"}, {Label: "Memory", Value: "8 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GeForce GTX 1060"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "November 10, 2023"}, {Label: "Publisher", Value: "Activision"}, {Label: "Developers", Value: "Sledgehammer Games"}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "November 10, 2023"}, {Label: "Publisher", Value: "Activision"}, {Label: "Developers", Value: "Sledgehammer Games"}, {Label: "Age Rating", Value: "PEGI 18"}},
 	},
-
-	// ==========================================
-	// INDIE HITS & MULTIPLAYER
-	// ==========================================
+	{
+		ID: "palworld", Title: "Palworld Steam Key GLOBAL", Image: "https://placehold.co/400x533/00bfff/ffffff?text=Palworld",
+		Platform: "Steam", Region: "Global", Price: "€29.99", PriceValue: 29.99, CashbackText: "2% Cashback",
+		Category: "Game", OS: []string{"Windows"}, Genres: []string{"Survival", "Adventure", "Multiplayer"},
+		Images: []string{"https://placehold.co/400x533/00bfff/ffffff?text=Palworld"},
+		Tags:   []string{"Open World", "Creature Collector", "Survival"}, Description: "Fight, farm, build and work alongside mysterious creatures called 'Pals' in this completely new multiplayer, open world survival and crafting game!",
+		RecommendedOffers: []models.Offer{{Seller: "Pocketpair", Price: "€29.99", Cashback: "2% Cashback", Rating: "9.5 Excellent", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:    map[string]int{"gameplay": 5, "story": 2, "graphics": 4, "soundtrack": 4},
+		Reviews: []models.Review{
+			{Rating: 5, User: "PalTrainer", Avatar: "https://placehold.co/40x40/222/fff?text=P", Date: "1/19/2024", Text: "Pokemon with guns and it actually works. Addictive gameplay loop.", IsTranslated: false, Upvotes: 200},
+		},
+		SystemRequirements: map[string][]models.SystemReq{
+			"windows": {{Label: "OS", Value: "Windows 10 64-bit"}, {Label: "Processor", Value: "Intel Core i5-3570K"}, {Label: "Memory", Value: "16 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GeForce GTX 1050"}},
+		},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "January 19, 2024"}, {Label: "Publisher", Value: "Pocketpair"}, {Label: "Developers", Value: "Pocketpair"}, {Label: "Age Rating", Value: "PEGI 12"}},
+	},
+	{
+		ID: "lethal-company", Title: "Lethal Company Steam Key GLOBAL", Image: "https://placehold.co/400x533/222222/ffffff?text=Lethal+Company",
+		Platform: "Steam", Region: "Global", Price: "€9.99", PriceValue: 9.99, CashbackText: "1% Cashback",
+		Category: "Game", OS: []string{"Windows"}, Genres: []string{"Horror", "Indie", "Multiplayer"},
+		Images: []string{"https://placehold.co/400x533/222222/ffffff?text=Lethal+Company"},
+		Tags:   []string{"Co-op", "Horror", "Comedy"}, Description: "A co-op horror about scavenging at abandoned moons to sell scrap to the Company.",
+		RecommendedOffers: []models.Offer{{Seller: "Zeekerss", Price: "€9.99", Cashback: "1% Cashback", Rating: "10 Perfect", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:    map[string]int{"gameplay": 5, "story": 1, "graphics": 3, "soundtrack": 4},
+		Reviews: []models.Review{
+			{Rating: 5, User: "Scavenger", Avatar: "https://placehold.co/40x40/222/fff?text=S", Date: "11/21/2023", Text: "Funniest and scariest game I've played with friends. Highly recommend.", IsTranslated: false, Upvotes: 500},
+		},
+		SystemRequirements: map[string][]models.SystemReq{
+			"windows": {{Label: "OS", Value: "Windows 10"}, {Label: "Processor", Value: "Intel Core i5-4460"}, {Label: "Memory", Value: "4 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GeForce GTX 750"}},
+		},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "November 21, 2023"}, {Label: "Publisher", Value: "Zeekerss"}, {Label: "Developers", Value: "Zeekerss"}, {Label: "Age Rating", Value: "PEGI 12"}},
+	},
 	{
 		ID: "hades", Title: "Hades Steam Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.webp",
 		Platform: "Steam", Region: "Global", Price: "€9.99", PriceValue: 9.99, OldPrice: "€24.99", Discount: "-60%", CashbackText: "2% Cashback",
@@ -171,49 +264,13 @@ var Products = []models.Product{
 		Tags:   []string{"Roguelike", "Greek Mythology", "Hack and Slash"}, Description: "Defy the god of the dead as you hack and slash out of the Underworld in this rogue-like dungeon crawler.",
 		RecommendedOffers: []models.Offer{{Seller: "Supergiant", Price: "€9.99", OldPrice: "€24.99", Discount: "-60%", Rating: "10 Perfect", Cashback: "2% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 5, "story": 5, "graphics": 5, "soundtrack": 5},
+		Reviews: []models.Review{
+			{Rating: 5, User: "Zagreus", Avatar: "https://placehold.co/40x40/222/fff?text=Z", Date: "9/17/2020", Text: "One of the best roguelikes ever. The dialogue system is brilliant.", IsTranslated: false, Upvotes: 90},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 7 SP1"}, {Label: "Processor", Value: "Dual Core 2.4 GHz"}, {Label: "Memory", Value: "4 GB RAM"}, {Label: "Graphics", Value: "1GB VRAM"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "September 17, 2020"}, {Label: "Publisher", Value: "Supergiant Games"}, {Label: "Developers", Value: "Supergiant Games"}},
-	},
-	{
-		ID: "stardew-valley", Title: "Stardew Valley Steam Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1q1f.webp",
-		Platform: "Steam", Region: "Global", Price: "€7.99", PriceValue: 7.99, OldPrice: "€13.99", Discount: "-42%", CashbackText: "1% Cashback",
-		Category: "Game", OS: []string{"Windows", "Mac"}, Genres: []string{"Simulation", "RPG", "Indie"},
-		Images: []string{"https://images.igdb.com/igdb/image/upload/t_cover_big/co1q1f.webp"},
-		Tags:   []string{"Farming Sim", "Pixel Graphics", "Relaxing"}, Description: "You've inherited your grandfather's old farm plot in Stardew Valley.",
-		RecommendedOffers: []models.Offer{{Seller: "ConcernedApe", Price: "€7.99", OldPrice: "€13.99", Discount: "-42%", Rating: "10 Perfect", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:    map[string]int{"gameplay": 5, "story": 4, "graphics": 4, "soundtrack": 5},
-		SystemRequirements: map[string][]models.SystemReq{
-			"windows": {{Label: "OS", Value: "Windows Vista or greater"}, {Label: "Processor", Value: "2 Ghz"}, {Label: "Memory", Value: "2 GB RAM"}, {Label: "Graphics", Value: "256 mb video memory"}},
-		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "February 26, 2016"}, {Label: "Publisher", Value: "ConcernedApe"}, {Label: "Developers", Value: "ConcernedApe"}},
-	},
-	{
-		ID: "terraria", Title: "Terraria Steam Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2r2w.webp",
-		Platform: "Steam", Region: "Global", Price: "€4.99", PriceValue: 4.99, OldPrice: "€9.99", Discount: "-50%", CashbackText: "1% Cashback",
-		Category: "Game", OS: []string{"Windows", "Mac"}, Genres: []string{"Adventure", "Indie", "Sandbox"},
-		Images: []string{"https://images.igdb.com/igdb/image/upload/t_cover_big/co2r2w.webp"},
-		Tags:   []string{"2D", "Crafting", "Survival"}, Description: "Dig, Fight, Explore, Build: The very world is at your fingertips as you fight for survival, fortune, and glory.",
-		RecommendedOffers: []models.Offer{{Seller: "Re-Logic", Price: "€4.99", OldPrice: "€9.99", Discount: "-50%", Rating: "10 Perfect", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:    map[string]int{"gameplay": 5, "story": 3, "graphics": 3, "soundtrack": 5},
-		SystemRequirements: map[string][]models.SystemReq{
-			"windows": {{Label: "OS", Value: "Windows XP"}, {Label: "Processor", Value: "1.6 Ghz"}, {Label: "Memory", Value: "512 MB RAM"}, {Label: "Graphics", Value: "128 MB Video Memory"}},
-		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "May 16, 2011"}, {Label: "Publisher", Value: "Re-Logic"}, {Label: "Developers", Value: "Re-Logic"}},
-	},
-	{
-		ID: "rust", Title: "Rust Steam Key GLOBAL", Image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2q7p.webp",
-		Platform: "Steam", Region: "Global", Price: "€29.99", PriceValue: 29.99, OldPrice: "€39.99", Discount: "-25%", CashbackText: "2% Cashback",
-		Category: "Game", OS: []string{"Windows", "Mac"}, Genres: []string{"Survival", "Multiplayer", "Action"},
-		Images: []string{"https://images.igdb.com/igdb/image/upload/t_cover_big/co2q7p.webp"},
-		Tags:   []string{"Crafting", "PvP", "Hardcore"}, Description: "The only aim in Rust is to survive. Everything wants you to die.",
-		RecommendedOffers: []models.Offer{{Seller: "Facepunch", Price: "€29.99", OldPrice: "€39.99", Discount: "-25%", Rating: "9.5 Excellent", Cashback: "2% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:    map[string]int{"gameplay": 4, "story": 1, "graphics": 4, "soundtrack": 3},
-		SystemRequirements: map[string][]models.SystemReq{
-			"windows": {{Label: "OS", Value: "Windows 10 64bit"}, {Label: "Processor", Value: "Intel Core i7-3770"}, {Label: "Memory", Value: "10 GB RAM"}, {Label: "Graphics", Value: "NVIDIA GeForce GTX 980"}},
-		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "February 8, 2018"}, {Label: "Publisher", Value: "Facepunch Studios"}, {Label: "Developers", Value: "Facepunch Studios"}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "September 17, 2020"}, {Label: "Publisher", Value: "Supergiant Games"}, {Label: "Developers", Value: "Supergiant Games"}, {Label: "Age Rating", Value: "PEGI 12"}},
 	},
 	{
 		ID: "it-takes-two", Title: "It Takes Two Origin Key GLOBAL", Image: "https://placehold.co/400x533/ffcc00/000000?text=It+Takes+Two",
@@ -223,14 +280,17 @@ var Products = []models.Product{
 		Tags:   []string{"Co-op", "Split Screen", "Puzzle"}, Description: "Embark on the craziest journey of your lives in It Takes Two.",
 		RecommendedOffers: []models.Offer{{Seller: "EA Originals", Price: "€15.99", OldPrice: "€39.99", Discount: "-60%", Rating: "9.8 Superb", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:    map[string]int{"gameplay": 5, "story": 5, "graphics": 5, "soundtrack": 4},
+		Reviews: []models.Review{
+			{Rating: 5, User: "CoopDuo", Avatar: "https://placehold.co/40x40/222/fff?text=C", Date: "3/26/2021", Text: "Best co-op game in years. Every level introduces a new mechanic.", IsTranslated: false, Upvotes: 75},
+		},
 		SystemRequirements: map[string][]models.SystemReq{
 			"windows": {{Label: "OS", Value: "Windows 8.1"}, {Label: "Processor", Value: "Intel Core i3-2100T"}, {Label: "Memory", Value: "8 GB RAM"}, {Label: "Graphics", Value: "Nvidia GeForce GTX 660"}},
 		},
-		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "March 26, 2021"}, {Label: "Publisher", Value: "Electronic Arts"}, {Label: "Developers", Value: "Hazelight"}},
+		OtherDetails: []models.OtherDetail{{Label: "Release date", Value: "March 26, 2021"}, {Label: "Publisher", Value: "Electronic Arts"}, {Label: "Developers", Value: "Hazelight"}, {Label: "Age Rating", Value: "PEGI 12"}},
 	},
 
 	// ==========================================
-	// SUBSCRIPTIONS & GAME POINTS
+	// SUBSCRIPTIONS & GAME POINTS (No Reviews/SysReq)
 	// ==========================================
 	{
 		ID: "xbox-gamepass-1m", Title: "Xbox Game Pass Ultimate - 1 Month Key EUROPE", Image: "https://placehold.co/400x533/107c10/ffffff?text=Xbox+Game+Pass",
@@ -240,6 +300,7 @@ var Products = []models.Product{
 		Tags:   []string{"Subscription", "Xbox", "PC"}, Description: "Get unlimited access to over 100 high-quality games on console, PC, and cloud.",
 		RecommendedOffers:  []models.Offer{{Seller: "Xbox Official", Price: "€14.66", OldPrice: "€16.99", Discount: "-14%", Rating: "9.9", Cashback: "3% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:     map[string]int{"value": 5, "library": 5},
+		Reviews:            []models.Review{{Rating: 5, User: "GamerGuy", Avatar: "https://placehold.co/40x40/222/fff?text=G", Date: "1/15/2024", Text: "Best deal in gaming. Hundreds of games for a low price.", IsTranslated: false, Upvotes: 42}},
 		SystemRequirements: map[string][]models.SystemReq{},
 		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Europe"}, {Label: "Type", Value: "Subscription"}},
 	},
@@ -251,6 +312,7 @@ var Products = []models.Product{
 		Tags:   []string{"Chat", "Gaming", "Subscription"}, Description: "Upgrade your Discord experience with custom emojis, bigger uploads, and HD streaming.",
 		RecommendedOffers:  []models.Offer{{Seller: "Discord", Price: "€8.99", Cashback: "2% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:     map[string]int{"value": 4, "features": 5},
+		Reviews:            []models.Review{{Rating: 5, User: "DiscordUser", Avatar: "https://placehold.co/40x40/5865F2/fff?text=D", Date: "2/10/2024", Text: "Nitro is worth it just for the bigger upload limit and HD streaming.", IsTranslated: false, Upvotes: 15}},
 		SystemRequirements: map[string][]models.SystemReq{},
 		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Global"}, {Label: "Type", Value: "Subscription"}},
 	},
@@ -274,120 +336,20 @@ var Products = []models.Product{
 		SystemRequirements: map[string][]models.SystemReq{},
 		OtherDetails:       []models.OtherDetail{{Label: "Type", Value: "In-Game Currency"}, {Label: "Region", Value: "Global"}},
 	},
+	{
+		ID: "apex-coins", Title: "Apex Legends 1000 Apex Coins Key GLOBAL", Image: "https://placehold.co/400x533/da292a/ffffff?text=Apex+Coins",
+		Platform: "Other", Region: "Global", Price: "€9.50", PriceValue: 9.50, CashbackText: "1% Cashback",
+		Category: "Game points", OS: []string{"Windows"}, Genres: []string{"Multiplayer", "Action"},
+		Images: []string{"https://placehold.co/400x533/da292a/ffffff?text=Apex+Coins"},
+		Tags:   []string{"FPS", "Battle Royale", "In-Game Currency"}, Description: "Get 1000 Apex Coins to unlock cosmetic items in Apex Legends.",
+		RecommendedOffers:  []models.Offer{{Seller: "EA", Price: "€9.50", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Type", Value: "In-Game Currency"}, {Label: "Region", Value: "Global"}},
+	},
 
 	// ==========================================
-	// GAMING E-CARDS & GIFT CARDS
+	// SOFTWARE
 	// ==========================================
-	{
-		ID: "roblox-200", Title: "Roblox - 200 Robux Key GLOBAL", Image: "https://placehold.co/400x533/000000/ffffff?text=200+Robux",
-		Platform: "Roblox", Region: "Global", Price: "€2.58", PriceValue: 2.58, CashbackText: "6% Cashback",
-		Category: "Gaming eCards", OS: []string{"Android", "iOS", "Windows", "Mac"}, Genres: []string{"Multiplayer"},
-		Images: []string{"https://placehold.co/400x533/000000/ffffff?text=200+Robux"},
-		Tags:   []string{"Gaming", "Virtual Currency"}, Description: "Roblox is a global platform where millions of people gather together.",
-		RecommendedOffers: []models.Offer{{Seller: "Roblox Corp", Price: "€2.58", Cashback: "6% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:    map[string]int{"value": 4},
-		OtherDetails:      []models.OtherDetail{{Label: "Type", Value: "In-Game Currency"}, {Label: "Region", Value: "Global"}},
-	},
-	{
-		ID: "psn-100-gbp", Title: "PlayStation Network Card 100 GBP (UK) PSN Key", Image: "https://placehold.co/400x533/003087/ffffff?text=PSN+100+GBP",
-		Platform: "PSN", Region: "United Kingdom", Price: "€108.23", PriceValue: 108.23, OldPrice: "€115.00", Discount: "-6%", CashbackText: "Cashback: €5.41",
-		Category: "Gaming eCards", OS: []string{"PSN"}, Genres: []string{},
-		Images: []string{"https://placehold.co/400x533/003087/ffffff?text=PSN+100+GBP"},
-		Tags:   []string{"Gift Card", "PlayStation"}, Description: "Buy PlayStation Network Card 100 GBP and top up your PSN wallet.",
-		RecommendedOffers:  []models.Offer{{Seller: "Sony", Price: "€108.23", OldPrice: "€115.00", Discount: "-6%", Cashback: "Cashback: €5.41", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OtherOffers:        []models.Offer{{Seller: "CdKeyMarkt", Price: "€109.00", OldPrice: "€115.00", Discount: "-5%", Cashback: "Cashback: €5.45", Verified: true}},
-		OverallRatings:     map[string]int{"value": 5},
-		SystemRequirements: map[string][]models.SystemReq{},
-		OtherDetails:       []models.OtherDetail{{Label: "Type", Value: "Wallet Top-up"}, {Label: "Region", Value: "United Kingdom"}},
-	},
-	{
-		ID: "steam-20-eur", Title: "Steam Wallet Gift Card 20 EUR Key EUROPE", Image: "https://placehold.co/400x533/000000/ffffff?text=Steam+20+EUR",
-		Platform: "Steam Gift Card", Region: "Europe", Price: "€20.00", PriceValue: 20.00, CashbackText: "1% Cashback",
-		Category: "Gaming eCards", OS: []string{}, Genres: []string{},
-		Images: []string{"https://placehold.co/400x533/000000/ffffff?text=Steam+20+EUR"},
-		Tags:   []string{"Steam", "Wallet Top-up"}, Description: "Add funds to your Steam Wallet to buy games, software, and hardware.",
-		RecommendedOffers:  []models.Offer{{Seller: "Valve", Price: "€20.00", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:     map[string]int{"value": 5},
-		SystemRequirements: map[string][]models.SystemReq{},
-		OtherDetails:       []models.OtherDetail{{Label: "Type", Value: "Wallet Top-up"}, {Label: "Region", Value: "Europe"}},
-	},
-	{
-		ID: "netflix-50-eur", Title: "Netflix Gift Card 50 EUR", Image: "https://placehold.co/400x533/141414/e50914?text=NETFLIX",
-		Platform: "Netflix", Region: "Europe", Price: "€50.00", PriceValue: 50.00, CashbackText: "2% Cashback",
-		Category: "eGift Cards", OS: []string{}, Genres: []string{},
-		Images: []string{"https://placehold.co/400x533/141414/e50914?text=NETFLIX"},
-		Tags:   []string{"Streaming", "Gift Card"}, Description: "Watch TV shows and movies on Netflix.",
-		RecommendedOffers:  []models.Offer{{Seller: "Netflix", Price: "€50.00", Cashback: "2% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:     map[string]int{"value": 5},
-		SystemRequirements: map[string][]models.SystemReq{},
-		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Europe"}, {Label: "Type", Value: "Digital Gift Card"}},
-	},
-	{
-		ID: "spotify-30-eur", Title: "Spotify Premium Gift Card 30 EUR", Image: "https://placehold.co/400x533/1db954/ffffff?text=Spotify+30",
-		Platform: "Spotify", Region: "Europe", Price: "€30.00", PriceValue: 30.00, CashbackText: "1% Cashback",
-		Category: "eGift Cards", OS: []string{}, Genres: []string{},
-		Images: []string{"https://placehold.co/400x533/1db954/ffffff?text=Spotify+30"},
-		Tags:   []string{"Music", "Streaming"}, Description: "Get Spotify Premium.",
-		RecommendedOffers:  []models.Offer{{Seller: "Spotify", Price: "€30.00", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:     map[string]int{"value": 5},
-		SystemRequirements: map[string][]models.SystemReq{},
-		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Europe"}, {Label: "Type", Value: "Digital Gift Card"}},
-	},
-	{
-		ID: "apple-itunes-25", Title: "Apple iTunes Gift Card 25 EUR", Image: "https://placehold.co/400x533/ffffff/000000?text=Apple+iTunes",
-		Platform: "Apple", Region: "Europe", Price: "€25.00", PriceValue: 25.00, CashbackText: "3% Cashback",
-		Category: "eGift Cards", OS: []string{}, Genres: []string{},
-		Images: []string{"https://placehold.co/400x533/ffffff/000000?text=Apple+iTunes"},
-		Tags:   []string{"Apple", "Apps", "Music"}, Description: "App Store & iTunes Gift Card.",
-		RecommendedOffers:  []models.Offer{{Seller: "Apple", Price: "€25.00", Cashback: "3% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:     map[string]int{"value": 5},
-		SystemRequirements: map[string][]models.SystemReq{},
-		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Europe"}, {Label: "Type", Value: "Digital Gift Card"}},
-	},
-	{
-		ID: "amazon-50-eur", Title: "Amazon Gift Card 50 EUR", Image: "https://placehold.co/400x533/232f3e/ff9900?text=amazon",
-		Platform: "Other", Region: "Europe", Price: "€50.00", PriceValue: 50.00, CashbackText: "1% Cashback",
-		Category: "eGift Cards", OS: []string{}, Genres: []string{},
-		Images: []string{"https://placehold.co/400x533/232f3e/ff9900?text=amazon"},
-		Tags:   []string{"Retail", "Shopping"}, Description: "Shop millions of products on Amazon.",
-		RecommendedOffers:  []models.Offer{{Seller: "Amazon", Price: "€50.00", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:     map[string]int{"value": 5},
-		SystemRequirements: map[string][]models.SystemReq{},
-		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Europe"}, {Label: "Type", Value: "Digital Gift Card"}},
-	},
-	{
-		ID: "google-play-15", Title: "Google Play Gift Card 15 EUR Key", Image: "https://placehold.co/400x533/000000/ffffff?text=Google+Play",
-		Platform: "Other", Region: "Europe", Price: "€15.00", PriceValue: 15.00, CashbackText: "1% Cashback",
-		Category: "eGift Cards", OS: []string{"Android"}, Genres: []string{},
-		Images: []string{"https://placehold.co/400x533/000000/ffffff?text=Google+Play"},
-		Tags:   []string{"Android", "Apps", "Games"}, Description: "Get apps, games, and in-app items on Google Play.",
-		RecommendedOffers:  []models.Offer{{Seller: "Google", Price: "€15.00", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:     map[string]int{"value": 4},
-		SystemRequirements: map[string][]models.SystemReq{},
-		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Europe"}, {Label: "Type", Value: "Digital Gift Card"}},
-	},
-	{
-		ID: "razer-gold-20", Title: "Razer Gold Gift Card 20 EUR", Image: "https://placehold.co/400x533/1a1a1a/00ff00?text=Razer+Gold",
-		Platform: "Razer", Region: "Global", Price: "€20.00", PriceValue: 20.00, CashbackText: "5% Cashback",
-		Category: "eGift Cards", OS: []string{}, Genres: []string{},
-		Images: []string{"https://placehold.co/400x533/1a1a1a/00ff00?text=Razer+Gold"},
-		Tags:   []string{"Gaming", "Virtual Currency"}, Description: "Buy games and in-game items across thousands of titles.",
-		RecommendedOffers:  []models.Offer{{Seller: "Razer", Price: "€20.00", Cashback: "5% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:     map[string]int{"value": 5},
-		SystemRequirements: map[string][]models.SystemReq{},
-		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Global"}, {Label: "Type", Value: "Digital Gift Card"}},
-	},
-	{
-		ID: "airalo-esim-50", Title: "Airalo eSIM 50 USD Voucher GLOBAL", Image: "https://placehold.co/400x533/d4af37/ffffff?text=airalo",
-		Platform: "Other", Region: "Global", Price: "€38.35", PriceValue: 38.35, CashbackText: "2% Cashback",
-		Category: "eSIM", OS: []string{"Android", "iOS"}, Genres: []string{},
-		Images: []string{"https://placehold.co/400x533/d4af37/ffffff?text=airalo"},
-		Tags:   []string{"Travel", "Data"}, Description: "Stay connected while traveling with a global eSIM.",
-		RecommendedOffers:  []models.Offer{{Seller: "Airalo", Price: "€38.35", Cashback: "2% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
-		OverallRatings:     map[string]int{"value": 4},
-		SystemRequirements: map[string][]models.SystemReq{},
-		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Global"}, {Label: "Type", Value: "eSIM"}},
-	},
 	{
 		ID: "windows-11-pro", Title: "Windows 11 Professional CD-KEY (PC) GLOBAL", Image: "https://placehold.co/400x533/0078d7/ffffff?text=Windows+11",
 		Platform: "Other", Region: "Global", Price: "€24.99", PriceValue: 24.99, CashbackText: "2% Cashback",
@@ -397,6 +359,7 @@ var Products = []models.Product{
 		RecommendedOffers:  []models.Offer{{Seller: "Microsoft", Price: "€24.99", Cashback: "2% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OtherOffers:        []models.Offer{{Seller: "SoftwareKeys", Price: "€25.50", Cashback: "1% Cashback", Verified: true}},
 		OverallRatings:     map[string]int{"value": 4, "features": 5},
+		Reviews:            []models.Review{{Rating: 4, User: "TechGuy", Avatar: "https://placehold.co/40x400078d7/fff?text=T", Date: "3/1/2024", Text: "Works perfectly. Activated on first try.", IsTranslated: false, Upvotes: 10}},
 		SystemRequirements: map[string][]models.SystemReq{},
 		OtherDetails:       []models.OtherDetail{{Label: "Type", Value: "Operating System"}, {Label: "Region", Value: "Global"}},
 	},
@@ -408,7 +371,139 @@ var Products = []models.Product{
 		Tags:   []string{"Productivity", "Microsoft"}, Description: "Microsoft Office 2021 Professional Plus.",
 		RecommendedOffers:  []models.Offer{{Seller: "Microsoft", Price: "€39.99", Cashback: "2% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
 		OverallRatings:     map[string]int{"value": 4, "features": 5},
+		Reviews:            []models.Review{{Rating: 5, User: "Worker", Avatar: "https://placehold.co/40x40/d83b01/fff?text=W", Date: "2/15/2024", Text: "Lifetime license is much better than subscription. Great price.", IsTranslated: false, Upvotes: 22}},
 		SystemRequirements: map[string][]models.SystemReq{},
 		OtherDetails:       []models.OtherDetail{{Label: "Type", Value: "Productivity Software"}, {Label: "Region", Value: "Global"}},
+	},
+	{
+		ID: "nordvpn-1y", Title: "NordVPN 1 Year Subscription Key GLOBAL", Image: "https://placehold.co/400x533/4687ff/ffffff?text=NordVPN",
+		Platform: "Other", Region: "Global", Price: "€29.99", PriceValue: 29.99, OldPrice: "€59.99", Discount: "-50%", CashbackText: "5% Cashback",
+		Category: "Software", OS: []string{"Windows", "Mac", "Android", "iOS"}, Genres: []string{},
+		Images: []string{"https://placehold.co/400x533/4687ff/ffffff?text=NordVPN"},
+		Tags:   []string{"VPN", "Security"}, Description: "Protect your online privacy with NordVPN.",
+		RecommendedOffers:  []models.Offer{{Seller: "NordVPN", Price: "€29.99", OldPrice: "€59.99", Discount: "-50%", Cashback: "5% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:     map[string]int{"value": 5, "speed": 5},
+		Reviews:            []models.Review{{Rating: 5, User: "PrivacyAdvocate", Avatar: "https://placehold.co/40x404687ff/fff?text=P", Date: "1/20/2024", Text: "Fast servers, easy to use app. Worth every penny.", IsTranslated: false, Upvotes: 35}},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Type", Value: "VPN Subscription"}, {Label: "Region", Value: "Global"}},
+	},
+
+	// ==========================================
+	// GAMING E-CARDS (No Reviews/SysReq)
+	// ==========================================
+	{
+		ID: "roblox-200", Title: "Roblox - 200 Robux Key GLOBAL", Image: "https://placehold.co/400x533/000000/ffffff?text=200+Robux",
+		Platform: "Roblox", Region: "Global", Price: "€2.58", PriceValue: 2.58, CashbackText: "6% Cashback",
+		Category: "Gaming eCards", OS: []string{"Android", "iOS", "Windows", "Mac"}, Genres: []string{"Multiplayer"},
+		Images: []string{"https://placehold.co/400x533/000000/ffffff?text=200+Robux"},
+		Tags:   []string{"Gaming", "Virtual Currency"}, Description: "Roblox is a global platform where millions of people gather together.",
+		RecommendedOffers:  []models.Offer{{Seller: "Roblox Corp", Price: "€2.58", Cashback: "6% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:     map[string]int{},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Type", Value: "In-Game Currency"}, {Label: "Region", Value: "Global"}},
+	},
+	{
+		ID: "psn-100-gbp", Title: "PlayStation Network Card 100 GBP (UK) PSN Key", Image: "https://placehold.co/400x533/003087/ffffff?text=PSN+100+GBP",
+		Platform: "PSN", Region: "United Kingdom", Price: "€108.23", PriceValue: 108.23, OldPrice: "€115.00", Discount: "-6%", CashbackText: "Cashback: €5.41",
+		Category: "Gaming eCards", OS: []string{"PSN"}, Genres: []string{},
+		Images: []string{"https://placehold.co/400x533/003087/ffffff?text=PSN+100+GBP"},
+		Tags:   []string{"Gift Card", "PlayStation"}, Description: "Buy PlayStation Network Card 100 GBP and top up your PSN wallet.",
+		RecommendedOffers:  []models.Offer{{Seller: "Sony", Price: "€108.23", OldPrice: "€115.00", Discount: "-6%", Cashback: "Cashback: €5.41", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OtherOffers:        []models.Offer{{Seller: "CdKeyMarkt", Price: "€109.00", OldPrice: "€115.00", Discount: "-5%", Cashback: "Cashback: €5.45", Verified: true}},
+		OverallRatings:     map[string]int{},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Type", Value: "Wallet Top-up"}, {Label: "Region", Value: "United Kingdom"}},
+	},
+	{
+		ID: "steam-20-eur", Title: "Steam Wallet Gift Card 20 EUR Key EUROPE", Image: "https://placehold.co/400x533/000000/ffffff?text=Steam+20+EUR",
+		Platform: "Steam Gift Card", Region: "Europe", Price: "€20.00", PriceValue: 20.00, CashbackText: "1% Cashback",
+		Category: "Gaming eCards", OS: []string{}, Genres: []string{},
+		Images: []string{"https://placehold.co/400x533/000000/ffffff?text=Steam+20+EUR"},
+		Tags:   []string{"Steam", "Wallet Top-up"}, Description: "Add funds to your Steam Wallet to buy games, software, and hardware.",
+		RecommendedOffers:  []models.Offer{{Seller: "Valve", Price: "€20.00", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:     map[string]int{},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Type", Value: "Wallet Top-up"}, {Label: "Region", Value: "Europe"}},
+	},
+
+	// ==========================================
+	// E-GIFT CARDS (No Reviews/SysReq)
+	// ==========================================
+	{
+		ID: "netflix-50-eur", Title: "Netflix Gift Card 50 EUR", Image: "https://placehold.co/400x533/141414/e50914?text=NETFLIX",
+		Platform: "Netflix", Region: "Europe", Price: "€50.00", PriceValue: 50.00, CashbackText: "2% Cashback",
+		Category: "eGift Cards", OS: []string{}, Genres: []string{},
+		Images: []string{"https://placehold.co/400x533/141414/e50914?text=NETFLIX"},
+		Tags:   []string{"Streaming", "Gift Card"}, Description: "Watch TV shows and movies on Netflix.",
+		RecommendedOffers:  []models.Offer{{Seller: "Netflix", Price: "€50.00", Cashback: "2% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:     map[string]int{},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Europe"}, {Label: "Type", Value: "Digital Gift Card"}},
+	},
+	{
+		ID: "spotify-30-eur", Title: "Spotify Premium Gift Card 30 EUR", Image: "https://placehold.co/400x533/1db954/ffffff?text=Spotify+30",
+		Platform: "Spotify", Region: "Europe", Price: "€30.00", PriceValue: 30.00, CashbackText: "1% Cashback",
+		Category: "eGift Cards", OS: []string{}, Genres: []string{},
+		Images: []string{"https://placehold.co/400x533/1db954/ffffff?text=Spotify+30"},
+		Tags:   []string{"Music", "Streaming"}, Description: "Get Spotify Premium.",
+		RecommendedOffers:  []models.Offer{{Seller: "Spotify", Price: "€30.00", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:     map[string]int{},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Europe"}, {Label: "Type", Value: "Digital Gift Card"}},
+	},
+	{
+		ID: "apple-itunes-25", Title: "Apple iTunes Gift Card 25 EUR", Image: "https://placehold.co/400x533/ffffff/000000?text=Apple+iTunes",
+		Platform: "Apple", Region: "Europe", Price: "€25.00", PriceValue: 25.00, CashbackText: "3% Cashback",
+		Category: "eGift Cards", OS: []string{}, Genres: []string{},
+		Images: []string{"https://placehold.co/400x533/ffffff/000000?text=Apple+iTunes"},
+		Tags:   []string{"Apple", "Apps", "Music"}, Description: "App Store & iTunes Gift Card.",
+		RecommendedOffers:  []models.Offer{{Seller: "Apple", Price: "€25.00", Cashback: "3% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:     map[string]int{},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Europe"}, {Label: "Type", Value: "Digital Gift Card"}},
+	},
+	{
+		ID: "amazon-50-eur", Title: "Amazon Gift Card 50 EUR", Image: "https://placehold.co/400x533/232f3e/ff9900?text=amazon",
+		Platform: "Other", Region: "Europe", Price: "€50.00", PriceValue: 50.00, CashbackText: "1% Cashback",
+		Category: "eGift Cards", OS: []string{}, Genres: []string{},
+		Images: []string{"https://placehold.co/400x533/232f3e/ff9900?text=amazon"},
+		Tags:   []string{"Retail", "Shopping"}, Description: "Shop millions of products on Amazon.",
+		RecommendedOffers:  []models.Offer{{Seller: "Amazon", Price: "€50.00", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:     map[string]int{},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Europe"}, {Label: "Type", Value: "Digital Gift Card"}},
+	},
+	{
+		ID: "google-play-15", Title: "Google Play Gift Card 15 EUR Key", Image: "https://placehold.co/400x533/000000/ffffff?text=Google+Play",
+		Platform: "Other", Region: "Europe", Price: "€15.00", PriceValue: 15.00, CashbackText: "1% Cashback",
+		Category: "eGift Cards", OS: []string{"Android"}, Genres: []string{},
+		Images: []string{"https://placehold.co/400x533/000000/ffffff?text=Google+Play"},
+		Tags:   []string{"Android", "Apps", "Games"}, Description: "Get apps, games, and in-app items on Google Play.",
+		RecommendedOffers:  []models.Offer{{Seller: "Google", Price: "€15.00", Cashback: "1% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:     map[string]int{},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Europe"}, {Label: "Type", Value: "Digital Gift Card"}},
+	},
+	{
+		ID: "razer-gold-20", Title: "Razer Gold Gift Card 20 EUR", Image: "https://placehold.co/400x533/1a1a1a/00ff00?text=Razer+Gold",
+		Platform: "Razer", Region: "Global", Price: "€20.00", PriceValue: 20.00, CashbackText: "5% Cashback",
+		Category: "eGift Cards", OS: []string{}, Genres: []string{},
+		Images: []string{"https://placehold.co/400x533/1a1a1a/00ff00?text=Razer+Gold"},
+		Tags:   []string{"Gaming", "Virtual Currency"}, Description: "Buy games and in-game items across thousands of titles.",
+		RecommendedOffers:  []models.Offer{{Seller: "Razer", Price: "€20.00", Cashback: "5% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:     map[string]int{},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Global"}, {Label: "Type", Value: "Digital Gift Card"}},
+	},
+	{
+		ID: "airalo-esim-50", Title: "Airalo eSIM 50 USD Voucher GLOBAL", Image: "https://placehold.co/400x533/d4af37/ffffff?text=airalo",
+		Platform: "Other", Region: "Global", Price: "€38.35", PriceValue: 38.35, CashbackText: "2% Cashback",
+		Category: "eSIM", OS: []string{"Android", "iOS"}, Genres: []string{},
+		Images: []string{"https://placehold.co/400x533/d4af37/ffffff?text=airalo"},
+		Tags:   []string{"Travel", "Data"}, Description: "Stay connected while traveling with a global eSIM.",
+		RecommendedOffers:  []models.Offer{{Seller: "Airalo", Price: "€38.35", Cashback: "2% Cashback", IsFeatured: true, HasPayPal: true, HasCart: true, IsPrimary: true, Verified: true}},
+		OverallRatings:     map[string]int{},
+		SystemRequirements: map[string][]models.SystemReq{},
+		OtherDetails:       []models.OtherDetail{{Label: "Region", Value: "Global"}, {Label: "Type", Value: "eSIM"}},
 	},
 }
